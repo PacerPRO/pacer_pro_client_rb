@@ -31,27 +31,23 @@ module PacerProClient
       @api_client = api_client
     end
 
+    # A collection of matters.
     # 
-    # 
-    # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
     # @param [Hash] opts the optional parameters
     # @return [Matters]
-    def matters_get(authorization, opts = {})
-      data, _status_code, _headers = matters_get_with_http_info(authorization, opts)
+    def matters_get(opts = {})
+      data, _status_code, _headers = matters_get_with_http_info(opts)
       return data
     end
 
+    # A collection of matters.
     # 
-    # 
-    # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
     # @param [Hash] opts the optional parameters
     # @return [Array<(Matters, Fixnum, Hash)>] Matters data, response status code and response headers
-    def matters_get_with_http_info(authorization, opts = {})
+    def matters_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: MattersApi.matters_get ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling MattersApi.matters_get" if authorization.nil?
       # resource path
       local_var_path = "/matters".sub('{format}','json')
 
@@ -68,14 +64,13 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -89,31 +84,27 @@ module PacerProClient
       return data, status_code, headers
     end
 
-    # 
+    # A single matter.
     # 
     # @param matter_id The database identifier of the matter.
-    # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
     # @param [Hash] opts the optional parameters
     # @return [Matter]
-    def matters_matter_id_get(matter_id, authorization, opts = {})
-      data, _status_code, _headers = matters_matter_id_get_with_http_info(matter_id, authorization, opts)
+    def matters_matter_id_get(matter_id, opts = {})
+      data, _status_code, _headers = matters_matter_id_get_with_http_info(matter_id, opts)
       return data
     end
 
-    # 
+    # A single matter.
     # 
     # @param matter_id The database identifier of the matter.
-    # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
     # @param [Hash] opts the optional parameters
     # @return [Array<(Matter, Fixnum, Hash)>] Matter data, response status code and response headers
-    def matters_matter_id_get_with_http_info(matter_id, authorization, opts = {})
+    def matters_matter_id_get_with_http_info(matter_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: MattersApi.matters_matter_id_get ..."
       end
       # verify the required parameter 'matter_id' is set
       fail ArgumentError, "Missing the required parameter 'matter_id' when calling MattersApi.matters_matter_id_get" if matter_id.nil?
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling MattersApi.matters_matter_id_get" if authorization.nil?
       # resource path
       local_var_path = "/matters/{matterId}".sub('{format}','json').sub('{' + 'matterId' + '}', matter_id.to_s)
 
@@ -130,14 +121,13 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

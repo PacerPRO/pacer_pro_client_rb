@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **session_delete**
-> session_delete(authorization)
+> session_delete
 
 Revoke all JWT tokens (logout).
 
@@ -20,25 +20,26 @@ Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
 ```ruby
 # load the gem
 require 'pacer_pro_client'
+# setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
 
 api_instance = PacerProClient::AuthenticationApi.new
 
-authorization = "authorization_example" # String | 
-
-
 begin
   #Revoke all JWT tokens (logout).
-  api_instance.session_delete(authorization)
+  api_instance.session_delete
 rescue PacerProClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_delete: #{e}"
 end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **String**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -46,7 +47,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -56,7 +57,7 @@ No authorization required
 
 
 # **session_get**
-> Session session_get(authorization)
+> Session session_get
 
 Refresh authentication token
 
@@ -66,15 +67,19 @@ Using a valid auth token, you can use this to refresh it, thus extending the tim
 ```ruby
 # load the gem
 require 'pacer_pro_client'
+# setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
 
 api_instance = PacerProClient::AuthenticationApi.new
 
-authorization = "authorization_example" # String | 
-
-
 begin
   #Refresh authentication token
-  result = api_instance.session_get(authorization)
+  result = api_instance.session_get
   p result
 rescue PacerProClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_get: #{e}"
@@ -82,10 +87,7 @@ end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **String**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -93,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -103,7 +105,7 @@ No authorization required
 
 
 # **session_post**
-> Session session_post(session)
+> Session session_post(user)
 
 Initial authentication.
 
@@ -116,12 +118,12 @@ require 'pacer_pro_client'
 
 api_instance = PacerProClient::AuthenticationApi.new
 
-session = PacerProClient::User.new # User | 
+user = PacerProClient::User.new # User | User credentials
 
 
 begin
   #Initial authentication.
-  result = api_instance.session_post(session)
+  result = api_instance.session_post(user)
   p result
 rescue PacerProClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_post: #{e}"
@@ -132,7 +134,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session** | [**User**](User.md)|  | 
+ **user** | [**User**](User.md)| User credentials | 
 
 ### Return type
 

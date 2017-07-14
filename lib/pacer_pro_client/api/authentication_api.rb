@@ -33,25 +33,21 @@ module PacerProClient
 
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-    # @param authorization 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def session_delete(authorization, opts = {})
-      session_delete_with_http_info(authorization, opts)
+    def session_delete(opts = {})
+      session_delete_with_http_info(opts)
       return nil
     end
 
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-    # @param authorization 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def session_delete_with_http_info(authorization, opts = {})
+    def session_delete_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AuthenticationApi.session_delete ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling AuthenticationApi.session_delete" if authorization.nil?
       # resource path
       local_var_path = "/session".sub('{format}','json')
 
@@ -68,14 +64,13 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -90,25 +85,21 @@ module PacerProClient
 
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-    # @param authorization 
     # @param [Hash] opts the optional parameters
     # @return [Session]
-    def session_get(authorization, opts = {})
-      data, _status_code, _headers = session_get_with_http_info(authorization, opts)
+    def session_get(opts = {})
+      data, _status_code, _headers = session_get_with_http_info(opts)
       return data
     end
 
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-    # @param authorization 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_get_with_http_info(authorization, opts = {})
+    def session_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AuthenticationApi.session_get ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling AuthenticationApi.session_get" if authorization.nil?
       # resource path
       local_var_path = "/session".sub('{format}','json')
 
@@ -125,14 +116,13 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['Bearer']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -148,25 +138,25 @@ module PacerProClient
 
     # Initial authentication.
     # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
-    # @param session 
+    # @param user User credentials
     # @param [Hash] opts the optional parameters
     # @return [Session]
-    def session_post(session, opts = {})
-      data, _status_code, _headers = session_post_with_http_info(session, opts)
+    def session_post(user, opts = {})
+      data, _status_code, _headers = session_post_with_http_info(user, opts)
       return data
     end
 
     # Initial authentication.
     # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
-    # @param session 
+    # @param user User credentials
     # @param [Hash] opts the optional parameters
     # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_post_with_http_info(session, opts = {})
+    def session_post_with_http_info(user, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AuthenticationApi.session_post ..."
       end
-      # verify the required parameter 'session' is set
-      fail ArgumentError, "Missing the required parameter 'session' when calling AuthenticationApi.session_post" if session.nil?
+      # verify the required parameter 'user' is set
+      fail ArgumentError, "Missing the required parameter 'user' when calling AuthenticationApi.session_post" if user.nil?
       # resource path
       local_var_path = "/session".sub('{format}','json')
 
@@ -188,7 +178,7 @@ module PacerProClient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(session)
+      post_body = @api_client.object_to_http_body(user)
       auth_names = []
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,

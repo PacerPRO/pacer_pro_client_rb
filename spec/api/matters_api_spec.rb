@@ -44,9 +44,8 @@ describe 'MattersApi' do
   end
 
   # unit tests for matters_get
+  # A collection of matters.
   # 
-  # 
-  # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
   # @param [Hash] opts the optional parameters
   # @return [Matters]
   describe 'matters_get test' do
@@ -56,10 +55,9 @@ describe 'MattersApi' do
   end
 
   # unit tests for matters_matter_id_get
-  # 
+  # A single matter.
   # 
   # @param matter_id The database identifier of the matter.
-  # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
   # @param [Hash] opts the optional parameters
   # @return [Matter]
   describe 'matters_matter_id_get test' do

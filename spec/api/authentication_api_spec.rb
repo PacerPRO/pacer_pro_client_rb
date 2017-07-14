@@ -29,7 +29,12 @@ require 'json'
 # Please update as you see appropriate
 describe 'AuthenticationApi' do
   before do
-    # run before each test
+    uri = URI.parse(ENV.fetch('API_GATEWAY_URL'))
+    PacerProClient.configure do |config|
+      config.host = uri.host
+      config.base_path = uri.path
+    end
+
     @instance = PacerProClient::AuthenticationApi.new
   end
 
@@ -46,7 +51,6 @@ describe 'AuthenticationApi' do
   # unit tests for session_delete
   # Revoke all JWT tokens (logout).
   # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-  # @param authorization 
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'session_delete test' do
@@ -58,11 +62,12 @@ describe 'AuthenticationApi' do
   # unit tests for session_get
   # Refresh authentication token
   # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-  # @param authorization 
   # @param [Hash] opts the optional parameters
   # @return [Session]
   describe 'session_get test' do
     it "should work" do
+      session = @instance.session_get('Bearer faketoken')
+      expect(session).to be_instance_of(PacerProClient::Session)
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -70,7 +75,7 @@ describe 'AuthenticationApi' do
   # unit tests for session_post
   # Initial authentication.
   # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
-  # @param session 
+  # @param user User credentials
   # @param [Hash] opts the optional parameters
   # @return [Session]
   describe 'session_post test' do
