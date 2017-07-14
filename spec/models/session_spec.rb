@@ -32,6 +32,7 @@ describe 'Session' do
   before do
     # run before each test
     @instance = PacerProClient::Session.new
+    @instance.build_from_hash(jwtToken: 'token', expiresAt: '2017-07-13T20:49:31.706Z')
   end
 
   after do
@@ -45,13 +46,13 @@ describe 'Session' do
   end
   describe 'test attribute "jwt_token"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.jwt_token).to eq('token')
     end
   end
 
   describe 'test attribute "expires_at"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.expires_at).to eq(DateTime.new(2017, 7, 13, 20, 49, 31.706, "+00:00"))
     end
   end
 

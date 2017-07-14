@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ken Mayer"]
   s.email       = ["ken@pacerpro.com"]
-  s.homepage    = "https://github.com/swagger-api/swagger-codegen"
+  s.homepage    = "https://github.com/PacerPro/pacer_pro_client"
   s.summary     = "This gem maps PacerPro&#39;s API to a ruby client"
   s.description = "This gem maps PacerPro&#39;s API to a ruby client"
   s.license     = "Apache 2.0"
@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
   s.add_runtime_dependency 'json', '~> 1.8', '>= 1.8.3'
 
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', '~> 3.4', '>= 3.4.0'
   s.add_development_dependency 'vcr', '~> 3.0', '>= 3.0.1'
   s.add_development_dependency 'webmock', '~> 1.24', '>= 1.24.3'
