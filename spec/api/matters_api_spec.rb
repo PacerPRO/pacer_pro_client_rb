@@ -43,26 +43,26 @@ describe 'MattersApi' do
     end
   end
 
-  # unit tests for matters_get
-  # 
-  # 
-  # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
+  # unit tests for matter_by_id
+  # A single matter.
+  # Get a single matter, specified by &#x60;matterId&#x60; in the path.
+  # @param matter_id The database identifier of the matter.
   # @param [Hash] opts the optional parameters
-  # @return [Matters]
-  describe 'matters_get test' do
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Matter]
+  describe 'matter_by_id test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for matters_matter_id_get
-  # 
-  # 
-  # @param matter_id The database identifier of the matter.
-  # @param authorization The header must look like: \&quot;Authorization: Bearer {...jwtToken...}\&quot;
+  # unit tests for matters_collection
+  # A collection of matters.
+  # Get all matters relevant to the firm.
   # @param [Hash] opts the optional parameters
-  # @return [Matter]
-  describe 'matters_matter_id_get test' do
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Matters]
+  describe 'matters_collection test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -43,37 +43,37 @@ describe 'AuthenticationApi' do
     end
   end
 
+  # unit tests for session_create
+  # Initial authentication.
+  # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
+  # @param user User credentials
+  # @param [Hash] opts the optional parameters
+  # @return [Session]
+  describe 'session_create test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for session_delete
   # Revoke all JWT tokens (logout).
   # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-  # @param authorization 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Empty]
   describe 'session_delete test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for session_get
+  # unit tests for session_refresh
   # Refresh authentication token
   # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-  # @param authorization 
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @return [Session]
-  describe 'session_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for session_post
-  # Initial authentication.
-  # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
-  # @param session 
-  # @param [Hash] opts the optional parameters
-  # @return [Session]
-  describe 'session_post test' do
+  describe 'session_refresh test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

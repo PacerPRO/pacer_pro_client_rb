@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ken Mayer"]
   s.email       = ["ken@pacerpro.com"]
-  s.homepage    = "https://github.com/swagger-api/swagger-codegen"
+  s.homepage    = "https://github.com/PacerPro/pacer_pro_client"
   s.summary     = "This gem maps PacerPro&#39;s API to a ruby client"
   s.description = "This gem maps PacerPro&#39;s API to a ruby client"
   s.license     = "Apache 2.0"
