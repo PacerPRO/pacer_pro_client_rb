@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **session_delete**
-> session_delete
+> Empty session_delete(opts)
 
 Revoke all JWT tokens (logout).
 
@@ -30,20 +30,28 @@ end
 
 api_instance = PacerProClient::AuthenticationApi.new
 
+opts = { 
+  authorization: "authorization_example" # String | `Bearer {...JSON Web Token...}`
+}
+
 begin
   #Revoke all JWT tokens (logout).
-  api_instance.session_delete
+  result = api_instance.session_delete(opts)
+  p result
 rescue PacerProClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_delete: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| &#x60;Bearer {...JSON Web Token...}&#x60; | [optional] 
 
 ### Return type
 
-nil (empty response body)
+[**Empty**](Empty.md)
 
 ### Authorization
 
@@ -57,7 +65,7 @@ nil (empty response body)
 
 
 # **session_get**
-> Session session_get
+> Session session_get(opts)
 
 Refresh authentication token
 
@@ -77,9 +85,13 @@ end
 
 api_instance = PacerProClient::AuthenticationApi.new
 
+opts = { 
+  authorization: "authorization_example" # String | `Bearer {...JSON Web Token...}`
+}
+
 begin
   #Refresh authentication token
-  result = api_instance.session_get
+  result = api_instance.session_get(opts)
   p result
 rescue PacerProClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_get: #{e}"
@@ -87,7 +99,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| &#x60;Bearer {...JSON Web Token...}&#x60; | [optional] 
 
 ### Return type
 

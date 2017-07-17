@@ -34,6 +34,7 @@ module PacerProClient
     # A collection of matters.
     # 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Matters]
     def matters_get(opts = {})
       data, _status_code, _headers = matters_get_with_http_info(opts)
@@ -43,6 +44,7 @@ module PacerProClient
     # A collection of matters.
     # 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Array<(Matters, Fixnum, Hash)>] Matters data, response status code and response headers
     def matters_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -64,6 +66,7 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
       form_params = {}
@@ -88,6 +91,7 @@ module PacerProClient
     # 
     # @param matter_id The database identifier of the matter.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Matter]
     def matters_matter_id_get(matter_id, opts = {})
       data, _status_code, _headers = matters_matter_id_get_with_http_info(matter_id, opts)
@@ -98,6 +102,7 @@ module PacerProClient
     # 
     # @param matter_id The database identifier of the matter.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Array<(Matter, Fixnum, Hash)>] Matter data, response status code and response headers
     def matters_matter_id_get_with_http_info(matter_id, opts = {})
       if @api_client.config.debugging
@@ -121,6 +126,7 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
       form_params = {}

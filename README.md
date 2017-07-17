@@ -30,6 +30,14 @@ Please follow the [installation](#installation) procedure, then
 2. The returned [PacerProClient::Session](docs/Session.md) will have the jwtToken
 3. 
 
+# Setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.pacerpro.com/v1*
@@ -46,6 +54,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [PacerProClient::Empty](docs/Empty.md)
+ - [PacerProClient::Error](docs/Error.md)
  - [PacerProClient::Matter](docs/Matter.md)
  - [PacerProClient::Matters](docs/Matters.md)
  - [PacerProClient::Session](docs/Session.md)

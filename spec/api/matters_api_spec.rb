@@ -47,6 +47,7 @@ describe 'MattersApi' do
   # A collection of matters.
   # 
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
   # @return [Matters]
   describe 'matters_get test' do
     it "should work" do
@@ -59,6 +60,7 @@ describe 'MattersApi' do
   # 
   # @param matter_id The database identifier of the matter.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
   # @return [Matter]
   describe 'matters_matter_id_get test' do
     it "should work" do

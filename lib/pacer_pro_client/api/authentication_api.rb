@@ -34,16 +34,18 @@ module PacerProClient
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @return [Empty]
     def session_delete(opts = {})
-      session_delete_with_http_info(opts)
-      return nil
+      data, _status_code, _headers = session_delete_with_http_info(opts)
+      return data
     end
 
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @return [Array<(Empty, Fixnum, Hash)>] Empty data, response status code and response headers
     def session_delete_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: AuthenticationApi.session_delete ..."
@@ -64,6 +66,7 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
       form_params = {}
@@ -76,7 +79,8 @@ module PacerProClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'Empty')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AuthenticationApi#session_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -86,6 +90,7 @@ module PacerProClient
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Session]
     def session_get(opts = {})
       data, _status_code, _headers = session_get_with_http_info(opts)
@@ -95,6 +100,7 @@ module PacerProClient
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
     # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
     def session_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -116,6 +122,7 @@ module PacerProClient
       # HTTP header 'Content-Type'
       local_header_content_type = []
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
       form_params = {}
