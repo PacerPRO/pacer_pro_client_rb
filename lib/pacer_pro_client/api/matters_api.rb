@@ -94,7 +94,7 @@ module PacerProClient
     # A collection of matters.
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [String] :authorization Bearer {...jwtToken...}
     # @return [Matters]
     def matters_collection(opts = {})
       data, _status_code, _headers = matters_collection_with_http_info(opts)
@@ -104,7 +104,7 @@ module PacerProClient
     # A collection of matters.
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [String] :authorization Bearer {...jwtToken...}
     # @return [Array<(Matters, Fixnum, Hash)>] Matters data, response status code and response headers
     def matters_collection_with_http_info(opts = {})
       if @api_client.config.debugging

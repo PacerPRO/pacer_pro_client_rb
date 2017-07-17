@@ -88,7 +88,7 @@ end
 api_instance = PacerProClient::MattersApi.new
 
 opts = { 
-  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
+  authorization: "authorization_example" # String | Bearer {...jwtToken...}
 }
 
 begin
@@ -104,7 +104,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+ **authorization** | **String**| Bearer {...jwtToken...} | [optional] 
 
 ### Return type
 

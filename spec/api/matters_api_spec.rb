@@ -60,7 +60,7 @@ describe 'MattersApi' do
   # A collection of matters.
   # Get all matters relevant to the firm.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @option opts [String] :authorization Bearer {...jwtToken...}
   # @return [Matters]
   describe 'matters_collection test' do
     it "should work" do
