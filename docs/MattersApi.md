@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 
 # **matters_collection**
-> Matters matters_collection(opts)
+> Array&lt;Matter&gt; matters_collection(opts)
 
 A collection of matters.
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Matters**](Matters.md)
+[**Array&lt;Matter&gt;**](Matter.md)
 
 ### Authorization
 

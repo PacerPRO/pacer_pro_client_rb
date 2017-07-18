@@ -61,7 +61,7 @@ describe 'MattersApi' do
   # Get all matters relevant to the firm.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...jwtToken...}
-  # @return [Matters]
+  # @return [Array<Matter>]
   describe 'matters_collection test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

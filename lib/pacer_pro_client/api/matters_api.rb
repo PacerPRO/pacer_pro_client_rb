@@ -95,7 +95,7 @@ module PacerProClient
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...jwtToken...}
-    # @return [Matters]
+    # @return [Array<Matter>]
     def matters_collection(opts = {})
       data, _status_code, _headers = matters_collection_with_http_info(opts)
       return data
@@ -105,7 +105,7 @@ module PacerProClient
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...jwtToken...}
-    # @return [Array<(Matters, Fixnum, Hash)>] Matters data, response status code and response headers
+    # @return [Array<(Array<Matter>, Fixnum, Hash)>] Array<Matter> data, response status code and response headers
     def matters_collection_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: MattersApi.matters_collection ..."
@@ -140,7 +140,7 @@ module PacerProClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Matters')
+        :return_type => 'Array<Matter>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MattersApi#matters_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
