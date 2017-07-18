@@ -43,7 +43,7 @@ describe 'AuthenticationApi' do
 
   let(:user_session) {
     user = PacerProClient::User.new(email: ENV.fetch('EMAIL'), password: ENV.fetch('PASSWORD'))
-    @instance.session_post(user)
+    @instance.session_create(user)
   }
 
   after do
@@ -56,11 +56,23 @@ describe 'AuthenticationApi' do
     end
   end
 
+  # unit tests for session_create
+  # Initial authentication.
+  # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
+  # @param user User credentials
+  # @param [Hash] opts the optional parameters
+  # @return [Session]
+  describe 'session_create test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for session_delete
   # Revoke all JWT tokens (logout).
   # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @return [Empty]
   describe 'session_delete test' do
     it "should work" do
@@ -70,22 +82,22 @@ describe 'AuthenticationApi' do
       empty = @instance.session_delete()
       expect(empty).to be_instance_of(PacerProClient::Empty)
 
-      expect { @instance.session_get() }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
+      expect { @instance.session_refresh() }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
     end
   end
 
-  # unit tests for session_get
+  # unit tests for session_refresh
   # Refresh authentication token
   # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @return [Session]
-  describe 'session_get test' do
+  describe 'session_refresh test' do
     it "should work" do
       PacerProClient.configure do |config|
         config.api_key['Authorization'] = user_session.jwt_token
       end
-      session = @instance.session_get()
+      session = @instance.session_refresh()
       expect(session).to be_instance_of(PacerProClient::Session)
       expect(jwt = JWT.decode(session.jwt_token, ENV.fetch('JWT_KEY')))
         .to match([{"jti"=>UUID_REGEX, "sub"=>1, "exp"=>a_kind_of(Fixnum), "scp"=>"user"}, {"typ"=>"JWT", "alg"=>"HS256"}])
@@ -96,20 +108,20 @@ describe 'AuthenticationApi' do
         config.api_key['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMGI1MDdhNy0yNzE2LTRmM2UtYWY2YS00NmIyNmZkYzI0ZTIiLCJzdWIiOjEsImV4cCI6MTUwMDMzNDk5Mywic2NwIjoidXNlciJ9.LqI24QLa1bSG332KL10Xb4kZ2NOGolzZCyaKI33oBNg'
       end
 
-      expect { @instance.session_get }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
+      expect { @instance.session_refresh }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
     end
   end
 
-  # unit tests for session_post
+  # unit tests for session_create
   # Initial authentication.
   # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
   # @param user User credentials
   # @param [Hash] opts the optional parameters
   # @return [Session]
-  describe 'session_post test' do
+  describe 'session_create test' do
     it "should work" do
       user = PacerProClient::User.new(email: ENV.fetch('EMAIL'), password: ENV.fetch('PASSWORD'))
-      session = @instance.session_post(user)
+      session = @instance.session_create(user)
       expect(session).to be_instance_of(PacerProClient::Session)
       expect(jwt = JWT.decode(session.jwt_token, ENV.fetch('JWT_KEY')))
         .to match([{"jti"=>UUID_REGEX, "sub"=>1, "exp"=>a_kind_of(Fixnum), "scp"=>"user"}, {"typ"=>"JWT", "alg"=>"HS256"}])
@@ -117,7 +129,7 @@ describe 'AuthenticationApi' do
 
     it "should fail with bad credentials" do
       user = PacerProClient::User.new
-      expect { session = @instance.session_post(user) }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
+      expect { session = @instance.session_create(user) }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
     end
   end
 

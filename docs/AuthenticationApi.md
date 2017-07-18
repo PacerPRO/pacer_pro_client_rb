@@ -4,9 +4,56 @@ All URIs are relative to *https://api.pacerpro.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**session_create**](AuthenticationApi.md#session_create) | **POST** /session | Initial authentication.
 [**session_delete**](AuthenticationApi.md#session_delete) | **DELETE** /session | Revoke all JWT tokens (logout).
-[**session_get**](AuthenticationApi.md#session_get) | **GET** /session | Refresh authentication token
-[**session_post**](AuthenticationApi.md#session_post) | **POST** /session | Initial authentication.
+[**session_refresh**](AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
+
+
+# **session_create**
+> Session session_create(user)
+
+Initial authentication.
+
+Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
+
+### Example
+```ruby
+# load the gem
+require 'pacer_pro_client'
+
+api_instance = PacerProClient::AuthenticationApi.new
+
+user = PacerProClient::User.new # User | User credentials
+
+
+begin
+  #Initial authentication.
+  result = api_instance.session_create(user)
+  p result
+rescue PacerProClient::ApiError => e
+  puts "Exception when calling AuthenticationApi->session_create: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)| User credentials | 
+
+### Return type
+
+[**Session**](Session.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **session_delete**
@@ -31,7 +78,7 @@ end
 api_instance = PacerProClient::AuthenticationApi.new
 
 opts = { 
-  authorization: "authorization_example" # String | `Bearer {...JSON Web Token...}`
+  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
 }
 
 begin
@@ -47,7 +94,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| &#x60;Bearer {...JSON Web Token...}&#x60; | [optional] 
+ **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
 
 ### Return type
 
@@ -64,8 +111,8 @@ Name | Type | Description  | Notes
 
 
 
-# **session_get**
-> Session session_get(opts)
+# **session_refresh**
+> Session session_refresh(opts)
 
 Refresh authentication token
 
@@ -86,15 +133,15 @@ end
 api_instance = PacerProClient::AuthenticationApi.new
 
 opts = { 
-  authorization: "authorization_example" # String | `Bearer {...JSON Web Token...}`
+  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
 }
 
 begin
   #Refresh authentication token
-  result = api_instance.session_get(opts)
+  result = api_instance.session_refresh(opts)
   p result
 rescue PacerProClient::ApiError => e
-  puts "Exception when calling AuthenticationApi->session_get: #{e}"
+  puts "Exception when calling AuthenticationApi->session_refresh: #{e}"
 end
 ```
 
@@ -102,7 +149,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| &#x60;Bearer {...JSON Web Token...}&#x60; | [optional] 
+ **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
 
 ### Return type
 
@@ -115,53 +162,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **session_post**
-> Session session_post(user)
-
-Initial authentication.
-
-Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
-
-### Example
-```ruby
-# load the gem
-require 'pacer_pro_client'
-
-api_instance = PacerProClient::AuthenticationApi.new
-
-user = PacerProClient::User.new # User | User credentials
-
-
-begin
-  #Initial authentication.
-  result = api_instance.session_post(user)
-  p result
-rescue PacerProClient::ApiError => e
-  puts "Exception when calling AuthenticationApi->session_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)| User credentials | 
-
-### Return type
-
-[**Session**](Session.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -45,35 +45,35 @@ describe 'MattersApi' do
     end
   end
 
-  # unit tests for matters_get
-  # A collection of matters.
-  # 
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
-  # @return [Matters]
-  describe 'matters_get test' do
-    it "should work" do
-      expect(@instance.matters_get).to match(PacerProClient::Matters.new)
-    end
-  end
-
-  # unit tests for matters_matter_id_get
+  # unit tests for matter_by_id
   # A single matter.
-  # 
+  # Get a single matter, specified by &#x60;matterId&#x60; in the path.
   # @param matter_id The database identifier of the matter.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @return [Matter]
-  describe 'matters_matter_id_get test' do
+  describe 'matter_by_id test' do
     it "should work" do
-      matters = @instance.matters_get()
+      matters = @instance.matters_collection()
       expect(matter = matters.first).to be_instance_of(PacerProClient::Matter)
-      expect(@instance.matters_matter_id_get(matter.id)).to be_instance_of(PacerProClient::Matter)
+      expect(@instance.matter_by_id(matter.id)).to be_instance_of(PacerProClient::Matter)
     end
 
     it "should raise an error if not found" do
-      expect { @instance.matters_matter_id_get('abc') }
+      expect { @instance.matter_by_id('abc') }
         .to raise_error(PacerProClient::ApiError, 'Not Found')
+    end
+  end
+
+  # unit tests for matters_collection
+  # A collection of matters.
+  # Get all matters relevant to the firm.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...jwtToken...}
+  # @return [Array<Matter>]
+  describe 'matters_collection test' do
+    it "should work" do
+      expect(@instance.matters_collection).to all(be_a(PacerProClient::Matter))
     end
   end
 

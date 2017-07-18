@@ -31,10 +31,67 @@ module PacerProClient
       @api_client = api_client
     end
 
+    # Initial authentication.
+    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
+    # @param user User credentials
+    # @param [Hash] opts the optional parameters
+    # @return [Session]
+    def session_create(user, opts = {})
+      data, _status_code, _headers = session_create_with_http_info(user, opts)
+      return data
+    end
+
+    # Initial authentication.
+    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
+    # @param user User credentials
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
+    def session_create_with_http_info(user, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_create ..."
+      end
+      # verify the required parameter 'user' is set
+      fail ArgumentError, "Missing the required parameter 'user' when calling AuthenticationApi.session_create" if user.nil?
+      # resource path
+      local_var_path = "/session".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(user)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Session')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AuthenticationApi#session_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Empty]
     def session_delete(opts = {})
       data, _status_code, _headers = session_delete_with_http_info(opts)
@@ -44,7 +101,7 @@ module PacerProClient
     # Revoke all JWT tokens (logout).
     # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Array<(Empty, Fixnum, Hash)>] Empty data, response status code and response headers
     def session_delete_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -90,21 +147,21 @@ module PacerProClient
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Session]
-    def session_get(opts = {})
-      data, _status_code, _headers = session_get_with_http_info(opts)
+    def session_refresh(opts = {})
+      data, _status_code, _headers = session_refresh_with_http_info(opts)
       return data
     end
 
     # Refresh authentication token
     # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization &#x60;Bearer {...JSON Web Token...}&#x60;
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_get_with_http_info(opts = {})
+    def session_refresh_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_get ..."
+        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_refresh ..."
       end
       # resource path
       local_var_path = "/session".sub('{format}','json')
@@ -138,64 +195,7 @@ module PacerProClient
         :auth_names => auth_names,
         :return_type => 'Session')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#session_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Initial authentication.
-    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
-    # @param user User credentials
-    # @param [Hash] opts the optional parameters
-    # @return [Session]
-    def session_post(user, opts = {})
-      data, _status_code, _headers = session_post_with_http_info(user, opts)
-      return data
-    end
-
-    # Initial authentication.
-    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
-    # @param user User credentials
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_post_with_http_info(user, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_post ..."
-      end
-      # verify the required parameter 'user' is set
-      fail ArgumentError, "Missing the required parameter 'user' when calling AuthenticationApi.session_post" if user.nil?
-      # resource path
-      local_var_path = "/session".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(user)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Session')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#session_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AuthenticationApi#session_refresh\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

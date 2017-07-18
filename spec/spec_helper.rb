@@ -133,7 +133,7 @@ module ApiHelpers
     test_client = PacerProClient::ApiClient.new(test_configuration)
 
     auth = PacerProClient::AuthenticationApi.new(test_client)
-    test_session = auth.session_post(email: ENV.fetch('EMAIL'), password: ENV.fetch('PASSWORD'))
+    test_session = auth.session_create(email: ENV.fetch('EMAIL'), password: ENV.fetch('PASSWORD'))
     test_configuration.api_key['Authorization'] = test_session.jwt_token
     test_client
   end
