@@ -51,7 +51,7 @@ describe 'AuthenticationApi' do
   end
 
   describe 'test an instance of AuthenticationApi' do
-    it 'should create an instact of AuthenticationApi' do
+    it 'should create an instance of AuthenticationApi' do
       expect(@instance).to be_instance_of(PacerProClient::AuthenticationApi)
     end
   end
@@ -89,7 +89,15 @@ describe 'AuthenticationApi' do
       expect(session).to be_instance_of(PacerProClient::Session)
       expect(jwt = JWT.decode(session.jwt_token, ENV.fetch('JWT_KEY')))
         .to match([{"jti"=>UUID_REGEX, "sub"=>1, "exp"=>a_kind_of(Fixnum), "scp"=>"user"}, {"typ"=>"JWT", "alg"=>"HS256"}])
-  end
+    end
+
+    it "should raise an error if the token has expired" do
+      PacerProClient.configure do |config|
+        config.api_key['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMGI1MDdhNy0yNzE2LTRmM2UtYWY2YS00NmIyNmZkYzI0ZTIiLCJzdWIiOjEsImV4cCI6MTUwMDMzNDk5Mywic2NwIjoidXNlciJ9.LqI24QLa1bSG332KL10Xb4kZ2NOGolzZCyaKI33oBNg'
+      end
+
+      expect { @instance.session_get }.to raise_error(PacerProClient::ApiError, 'Unauthorized')
+    end
   end
 
   # unit tests for session_post
