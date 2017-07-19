@@ -1,4 +1,4 @@
-# SwaggerClient::Error
+# PacerProClient::Error
 
 ## Properties
 Name | Type | Description | Notes
