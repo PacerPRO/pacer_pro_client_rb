@@ -6,6 +6,8 @@
 
 ### A `.env` with the following (ask Ken for a copy)
 
+| Variable        | Notes                                       |
+| --------------- | ------------------------------------------- |
 | JWT_KEY         | must match the pacerpro app's configuration |
 | EMAIL           | must match the default test user            |
 | PASSWORD        | must match the default test user            |
