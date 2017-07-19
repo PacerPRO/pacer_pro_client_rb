@@ -68,6 +68,7 @@ describe 'MattersApi' do
   # @return [Matter]
   describe 'matters_get_one test' do
     it "should work" do
+      matter = matters.first
       expect(@instance.matters_get_one(matter.id)).to be_instance_of(PacerProClient::Matter)
     end
 
