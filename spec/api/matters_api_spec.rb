@@ -29,6 +29,7 @@ require 'json'
 # Please update as you see appropriate
 describe 'MattersApi' do
   let(:api_client) { authenticate_for_testing }
+  let(:matters) { @instance.matters_get_collection() }
 
   before do
     # run before each test
@@ -53,14 +54,8 @@ describe 'MattersApi' do
   # @return [Array<Matter>]
   describe 'matters_get_collection test' do
     it "should work" do
-      matters = @instance.matters_collection()
-      expect(matter = matters.first).to be_instance_of(PacerProClient::Matter)
-      expect(@instance.matter_by_id(matter.id)).to be_instance_of(PacerProClient::Matter)
-    end
-
-    it "should raise an error if not found" do
-      expect { @instance.matter_by_id('abc') }
-        .to raise_error(PacerProClient::ApiError, 'Not Found')
+      expect(@instance.matters_get_collection).to all(be_a(PacerProClient::Matter))
+      expect(matters.first).to be_instance_of(PacerProClient::Matter)
     end
   end
 
@@ -73,7 +68,12 @@ describe 'MattersApi' do
   # @return [Matter]
   describe 'matters_get_one test' do
     it "should work" do
-      expect(@instance.matters_collection).to all(be_a(PacerProClient::Matter))
+      expect(@instance.matters_get_one(matter.id)).to be_instance_of(PacerProClient::Matter)
+    end
+
+    it "should raise an error if not found" do
+      expect { @instance.matters_get_one('abc') }
+        .to raise_error(PacerProClient::ApiError, 'Not Found')
     end
   end
 
