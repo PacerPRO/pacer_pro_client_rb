@@ -45,14 +45,13 @@ describe 'MattersApi' do
     end
   end
 
-  # unit tests for matter_by_id
-  # A single matter.
-  # Get a single matter, specified by &#x60;matterId&#x60; in the path.
-  # @param matter_id The database identifier of the matter.
+  # unit tests for matters_get_collection
+  # A collection of matters.
+  # Get all matters relevant to the firm.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...JSON Web Token...}
-  # @return [Matter]
-  describe 'matter_by_id test' do
+  # @return [Array<Matter>]
+  describe 'matters_get_collection test' do
     it "should work" do
       matters = @instance.matters_collection()
       expect(matter = matters.first).to be_instance_of(PacerProClient::Matter)
@@ -65,13 +64,14 @@ describe 'MattersApi' do
     end
   end
 
-  # unit tests for matters_collection
-  # A collection of matters.
-  # Get all matters relevant to the firm.
+  # unit tests for matters_get_one
+  # A single matter.
+  # Get a single matter, specified by &#x60;matterId&#x60; in the path.
+  # @param matter_id The database identifier of the matter.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization Bearer {...jwtToken...}
-  # @return [Array<Matter>]
-  describe 'matters_collection test' do
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Matter]
+  describe 'matters_get_one test' do
     it "should work" do
       expect(@instance.matters_collection).to all(be_a(PacerProClient::Matter))
     end

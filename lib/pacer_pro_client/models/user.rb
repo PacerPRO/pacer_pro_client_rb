@@ -24,7 +24,7 @@ limitations under the License.
 require 'date'
 
 module PacerProClient
-  # A user of the system.
+
   class User
     # A unique e-mail address that identifies the user to PacerPro.
     attr_accessor :email

@@ -31,84 +31,24 @@ module PacerProClient
       @api_client = api_client
     end
 
-    # A single matter.
-    # Get a single matter, specified by `matterId` in the path.
-    # @param matter_id The database identifier of the matter.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Matter]
-    def matter_by_id(matter_id, opts = {})
-      data, _status_code, _headers = matter_by_id_with_http_info(matter_id, opts)
-      return data
-    end
-
-    # A single matter.
-    # Get a single matter, specified by &#x60;matterId&#x60; in the path.
-    # @param matter_id The database identifier of the matter.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Array<(Matter, Fixnum, Hash)>] Matter data, response status code and response headers
-    def matter_by_id_with_http_info(matter_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: MattersApi.matter_by_id ..."
-      end
-      # verify the required parameter 'matter_id' is set
-      fail ArgumentError, "Missing the required parameter 'matter_id' when calling MattersApi.matter_by_id" if matter_id.nil?
-      # resource path
-      local_var_path = "/matters/{matterId}".sub('{format}','json').sub('{' + 'matterId' + '}', matter_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = []
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['Bearer']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Matter')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: MattersApi#matter_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # A collection of matters.
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...jwtToken...}
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Array<Matter>]
-    def matters_collection(opts = {})
-      data, _status_code, _headers = matters_collection_with_http_info(opts)
+    def matters_get_collection(opts = {})
+      data, _status_code, _headers = matters_get_collection_with_http_info(opts)
       return data
     end
 
     # A collection of matters.
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...jwtToken...}
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @return [Array<(Array<Matter>, Fixnum, Hash)>] Array<Matter> data, response status code and response headers
-    def matters_collection_with_http_info(opts = {})
+    def matters_get_collection_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: MattersApi.matters_collection ..."
+        @api_client.config.logger.debug "Calling API: MattersApi.matters_get_collection ..."
       end
       # resource path
       local_var_path = "/matters".sub('{format}','json')
@@ -142,7 +82,67 @@ module PacerProClient
         :auth_names => auth_names,
         :return_type => 'Array<Matter>')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: MattersApi#matters_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: MattersApi#matters_get_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # A single matter.
+    # Get a single matter, specified by `matterId` in the path.
+    # @param matter_id The database identifier of the matter.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Matter]
+    def matters_get_one(matter_id, opts = {})
+      data, _status_code, _headers = matters_get_one_with_http_info(matter_id, opts)
+      return data
+    end
+
+    # A single matter.
+    # Get a single matter, specified by &#x60;matterId&#x60; in the path.
+    # @param matter_id The database identifier of the matter.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Array<(Matter, Fixnum, Hash)>] Matter data, response status code and response headers
+    def matters_get_one_with_http_info(matter_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: MattersApi.matters_get_one ..."
+      end
+      # verify the required parameter 'matter_id' is set
+      fail ArgumentError, "Missing the required parameter 'matter_id' when calling MattersApi.matters_get_one" if matter_id.nil?
+      # resource path
+      local_var_path = "/matters/{matterId}".sub('{format}','json').sub('{' + 'matterId' + '}', matter_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Matter')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MattersApi#matters_get_one\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
