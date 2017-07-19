@@ -1,4 +1,4 @@
-# PacerProClient::AuthenticationApi
+# SwaggerClient::AuthenticationApi
 
 All URIs are relative to *https://api.pacerpro.com/v1*
 
@@ -19,18 +19,18 @@ Use this call to generate an authorization token for use in future calls. Provid
 ### Example
 ```ruby
 # load the gem
-require 'pacer_pro_client'
+require 'swagger_client'
 
-api_instance = PacerProClient::AuthenticationApi.new
+api_instance = SwaggerClient::AuthenticationApi.new
 
-user = PacerProClient::User.new # User | User credentials
+user = SwaggerClient::User.new # User | User credentials
 
 
 begin
   #Initial authentication.
   result = api_instance.session_create(user)
   p result
-rescue PacerProClient::ApiError => e
+rescue SwaggerClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_create: #{e}"
 end
 ```
@@ -66,16 +66,16 @@ Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
 ### Example
 ```ruby
 # load the gem
-require 'pacer_pro_client'
+require 'swagger_client'
 # setup authorization
-PacerProClient.configure do |config|
+SwaggerClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = PacerProClient::AuthenticationApi.new
+api_instance = SwaggerClient::AuthenticationApi.new
 
 opts = { 
   authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
@@ -85,7 +85,7 @@ begin
   #Revoke all JWT tokens (logout).
   result = api_instance.session_delete(opts)
   p result
-rescue PacerProClient::ApiError => e
+rescue SwaggerClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_delete: #{e}"
 end
 ```
@@ -121,16 +121,16 @@ Using a valid auth token, you can use this to refresh it, thus extending the tim
 ### Example
 ```ruby
 # load the gem
-require 'pacer_pro_client'
+require 'swagger_client'
 # setup authorization
-PacerProClient.configure do |config|
+SwaggerClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = PacerProClient::AuthenticationApi.new
+api_instance = SwaggerClient::AuthenticationApi.new
 
 opts = { 
   authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
@@ -140,7 +140,7 @@ begin
   #Refresh authentication token
   result = api_instance.session_refresh(opts)
   p result
-rescue PacerProClient::ApiError => e
+rescue SwaggerClient::ApiError => e
   puts "Exception when calling AuthenticationApi->session_refresh: #{e}"
 end
 ```

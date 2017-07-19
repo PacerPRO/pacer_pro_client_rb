@@ -1,4 +1,4 @@
-# PacerProClient::User
+# SwaggerClient::User
 
 ## Properties
 Name | Type | Description | Notes
