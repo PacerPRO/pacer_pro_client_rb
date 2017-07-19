@@ -24,18 +24,59 @@ limitations under the License.
 require 'date'
 
 module PacerProClient
-  # A collection of matters.
-  class Matters
+
+  class Error
+    # An error message
+    attr_accessor :error
+
+    # An error message (alias for `error`)
+    attr_accessor :message
+
+    # HTTP status code
+    attr_accessor :status
+
+    # the type of error
+    attr_accessor :type
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'error' => :'error',
+        :'message' => :'message',
+        :'status' => :'status',
+        :'type' => :'type'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'error' => :'String',
+        :'message' => :'String',
+        :'status' => :'Integer',
+        :'type' => :'String'
       }
     end
 
@@ -46,6 +87,22 @@ module PacerProClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
+      end
+
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
 
     end
 
@@ -59,14 +116,30 @@ module PacerProClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      type_validator = EnumAttributeValidator.new('String', ["error", "alert", "notice", "warning"])
+      return false unless type_validator.valid?(@type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["error", "alert", "notice", "warning"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          error == o.error &&
+          message == o.message &&
+          status == o.status &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -78,7 +151,7 @@ module PacerProClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [].hash
+      [error, message, status, type].hash
     end
 
     # Builds the object from hash

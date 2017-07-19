@@ -29,8 +29,8 @@ require 'pacer_pro_client/configuration'
 
 # Models
 require 'pacer_pro_client/models/empty'
+require 'pacer_pro_client/models/error'
 require 'pacer_pro_client/models/matter'
-require 'pacer_pro_client/models/matters'
 require 'pacer_pro_client/models/session'
 require 'pacer_pro_client/models/user'
 

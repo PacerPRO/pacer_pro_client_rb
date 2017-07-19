@@ -32,6 +32,7 @@ describe 'User' do
   before do
     # run before each test
     @instance = PacerProClient::User.new
+    @instance.build_from_hash(email: 'example@example.com', password: 'password')
   end
 
   after do
@@ -45,13 +46,13 @@ describe 'User' do
   end
   describe 'test attribute "email"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.email).to eq('example@example.com')
     end
   end
 
   describe 'test attribute "password"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.password).to eq('password')
     end
   end
 

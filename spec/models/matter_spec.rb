@@ -32,6 +32,17 @@ describe 'Matter' do
   before do
     # run before each test
     @instance = PacerProClient::Matter.new
+    @instance.build_from_hash({
+                                id:                 'matterId',
+                                caseId:             'caseId',
+                                clientMatterNumber: 'clientMatterNumber',
+                                judge:              'ABC',
+                                caseNumber:         '1:17-cv-123456-ABC',
+                                caseTitle:          'caseTitle',
+                                natureOfSuit:       'natureOfSuit',
+                                docketEntries:      123,
+                                activityAt:         '2017-07-13T20:49:31.706Z',
+                              })
   end
 
   after do
@@ -45,55 +56,55 @@ describe 'Matter' do
   end
   describe 'test attribute "id"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.id).to eq('matterId')
     end
   end
 
   describe 'test attribute "case_id"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.case_id).to eq('caseId')
     end
   end
 
   describe 'test attribute "client_matter_number"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.client_matter_number).to eq('clientMatterNumber')
     end
   end
 
   describe 'test attribute "judge"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.judge).to eq('ABC')
     end
   end
 
   describe 'test attribute "case_number"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.case_number).to eq('1:17-cv-123456-ABC')
     end
   end
 
   describe 'test attribute "case_title"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.case_title).to eq('caseTitle')
     end
   end
 
   describe 'test attribute "nature_of_suit"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.nature_of_suit).to eq('natureOfSuit')
     end
   end
 
   describe 'test attribute "docket_entries"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.docket_entries).to eq(123)
     end
   end
 
   describe 'test attribute "activity_at"' do
     it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      expect(@instance.activity_at).to eq(DateTime.new(2017, 7, 13, 20, 49, 31.706, "+00:00"))
     end
   end
 
