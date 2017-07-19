@@ -23,9 +23,9 @@ gem build pacer_pro_client.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./pacer_pro_client-0.0.0.gem
+gem install ./pacer_pro_client-0.2.1.gem
 ```
-(for development, run `gem install --dev ./pacer_pro_client-0.0.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./pacer_pro_client-0.2.1.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
