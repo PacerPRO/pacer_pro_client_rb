@@ -4,106 +4,13 @@ All URIs are relative to *https://api.pacerpro.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**session_create**](AuthenticationApi.md#session_create) | **POST** /session | Initial authentication.
 [**session_delete**](AuthenticationApi.md#session_delete) | **DELETE** /session | Revoke all JWT tokens (logout).
-[**session_get**](AuthenticationApi.md#session_get) | **GET** /session | Refresh authentication token
-[**session_post**](AuthenticationApi.md#session_post) | **POST** /session | Initial authentication.
+[**session_refresh**](AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
 
 
-# **session_delete**
-> session_delete(authorization)
-
-Revoke all JWT tokens (logout).
-
-Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-
-### Example
-```ruby
-# load the gem
-require 'pacer_pro_client'
-
-api_instance = PacerProClient::AuthenticationApi.new
-
-authorization = "authorization_example" # String | 
-
-
-begin
-  #Revoke all JWT tokens (logout).
-  api_instance.session_delete(authorization)
-rescue PacerProClient::ApiError => e
-  puts "Exception when calling AuthenticationApi->session_delete: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **String**|  | 
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-
-# **session_get**
-> Session session_get(authorization)
-
-Refresh authentication token
-
-Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-
-### Example
-```ruby
-# load the gem
-require 'pacer_pro_client'
-
-api_instance = PacerProClient::AuthenticationApi.new
-
-authorization = "authorization_example" # String | 
-
-
-begin
-  #Refresh authentication token
-  result = api_instance.session_get(authorization)
-  p result
-rescue PacerProClient::ApiError => e
-  puts "Exception when calling AuthenticationApi->session_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **String**|  | 
-
-### Return type
-
-[**Session**](Session.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **session_post**
-> Session session_post(session)
+# **session_create**
+> Session session_create(user)
 
 Initial authentication.
 
@@ -116,15 +23,15 @@ require 'pacer_pro_client'
 
 api_instance = PacerProClient::AuthenticationApi.new
 
-session = PacerProClient::User.new # User | 
+user = PacerProClient::User.new # User | User credentials
 
 
 begin
   #Initial authentication.
-  result = api_instance.session_post(session)
+  result = api_instance.session_create(user)
   p result
 rescue PacerProClient::ApiError => e
-  puts "Exception when calling AuthenticationApi->session_post: #{e}"
+  puts "Exception when calling AuthenticationApi->session_create: #{e}"
 end
 ```
 
@@ -132,7 +39,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session** | [**User**](User.md)|  | 
+ **user** | [**User**](User.md)| User credentials | 
 
 ### Return type
 
@@ -145,6 +52,116 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **session_delete**
+> Empty session_delete(opts)
+
+Revoke all JWT tokens (logout).
+
+Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
+
+### Example
+```ruby
+# load the gem
+require 'pacer_pro_client'
+# setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = PacerProClient::AuthenticationApi.new
+
+opts = { 
+  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
+}
+
+begin
+  #Revoke all JWT tokens (logout).
+  result = api_instance.session_delete(opts)
+  p result
+rescue PacerProClient::ApiError => e
+  puts "Exception when calling AuthenticationApi->session_delete: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+
+### Return type
+
+[**Empty**](Empty.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+
+# **session_refresh**
+> Session session_refresh(opts)
+
+Refresh authentication token
+
+Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
+
+### Example
+```ruby
+# load the gem
+require 'pacer_pro_client'
+# setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = PacerProClient::AuthenticationApi.new
+
+opts = { 
+  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
+}
+
+begin
+  #Refresh authentication token
+  result = api_instance.session_refresh(opts)
+  p result
+rescue PacerProClient::ApiError => e
+  puts "Exception when calling AuthenticationApi->session_refresh: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+
+### Return type
+
+[**Session**](Session.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

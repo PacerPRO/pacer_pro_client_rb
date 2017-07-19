@@ -138,7 +138,7 @@ module PacerProClient
       @host = 'api.pacerpro.com'
       @base_path = '/v1'
       @api_key = {}
-      @api_key_prefix = {}
+      @api_key_prefix = { 'Authorization' => 'Bearer' }
       @timeout = 0
       @verify_ssl = true
       @verify_ssl_host = true
@@ -201,6 +201,13 @@ module PacerProClient
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
+        'Bearer' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'Authorization',
+            value: api_key_with_prefix('Authorization')
+          },
       }
     end
   end
