@@ -12,7 +12,6 @@ file 'README.md' => ['dotenv', '.env', 'lib/pacer_pro_client/version.rb'] do |t|
     .gsub('{{VERSION}}', PacerProClient::VERSION)
     .gsub('YOUR_GIT_USERNAME', ENV.fetch('GIT_USERNAME'))
     .gsub('YOUR_GIT_REPO', ENV.fetch('GIT_REPO'))
-  puts readme
   File.open('README.md', 'w') do |f|
     f.write(readme)
   end
