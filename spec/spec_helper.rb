@@ -1,7 +1,7 @@
 =begin
 #PacerPro
 
-#PacerPro API documentation
+#PacerPro API documentation.
 
 OpenAPI spec version: 0.2.1
 Contact: ken@pacerpro.com

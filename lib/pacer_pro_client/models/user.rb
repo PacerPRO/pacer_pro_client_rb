@@ -1,7 +1,7 @@
 =begin
 #PacerPro
 
-#PacerPro API documentation
+#PacerPro API documentation.
 
 OpenAPI spec version: 0.2.1
 Contact: ken@pacerpro.com
@@ -24,7 +24,7 @@ limitations under the License.
 require 'date'
 
 module PacerProClient
-  # A user of the system.
+
   class User
     # A unique e-mail address that identifies the user to PacerPro.
     attr_accessor :email

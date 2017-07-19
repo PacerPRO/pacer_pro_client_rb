@@ -1,7 +1,7 @@
 =begin
 #PacerPro
 
-#PacerPro API documentation
+#PacerPro API documentation.
 
 OpenAPI spec version: 0.2.1
 Contact: ken@pacerpro.com
@@ -43,26 +43,26 @@ describe 'MattersApi' do
     end
   end
 
-  # unit tests for matter_by_id
+  # unit tests for matters_get_collection
+  # A collection of matters.
+  # Get all matters relevant to the firm.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Array<Matter>]
+  describe 'matters_get_collection test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for matters_get_one
   # A single matter.
   # Get a single matter, specified by &#x60;matterId&#x60; in the path.
   # @param matter_id The database identifier of the matter.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @return [Matter]
-  describe 'matter_by_id test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for matters_collection
-  # A collection of matters.
-  # Get all matters relevant to the firm.
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :authorization Bearer {...jwtToken...}
-  # @return [Array<Matter>]
-  describe 'matters_collection test' do
+  describe 'matters_get_one test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

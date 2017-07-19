@@ -1,7 +1,7 @@
 =begin
 #PacerPro
 
-#PacerPro API documentation
+#PacerPro API documentation.
 
 OpenAPI spec version: 0.2.1
 Contact: ken@pacerpro.com
@@ -31,7 +31,6 @@ require 'pacer_pro_client/configuration'
 require 'pacer_pro_client/models/empty'
 require 'pacer_pro_client/models/error'
 require 'pacer_pro_client/models/matter'
-require 'pacer_pro_client/models/matters'
 require 'pacer_pro_client/models/session'
 require 'pacer_pro_client/models/user'
 
