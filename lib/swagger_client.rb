@@ -28,10 +28,12 @@ require 'swagger_client/version'
 require 'swagger_client/configuration'
 
 # Models
+require 'swagger_client/models/attorney'
 require 'swagger_client/models/empty'
 require 'swagger_client/models/error'
 require 'swagger_client/models/matter'
 require 'swagger_client/models/model_case'
+require 'swagger_client/models/party'
 require 'swagger_client/models/session'
 require 'swagger_client/models/user'
 

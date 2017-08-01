@@ -84,10 +84,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [SwaggerClient::Attorney](docs/Attorney.md)
  - [SwaggerClient::Empty](docs/Empty.md)
  - [SwaggerClient::Error](docs/Error.md)
  - [SwaggerClient::Matter](docs/Matter.md)
  - [SwaggerClient::ModelCase](docs/ModelCase.md)
+ - [SwaggerClient::Party](docs/Party.md)
  - [SwaggerClient::Session](docs/Session.md)
  - [SwaggerClient::User](docs/User.md)
 
