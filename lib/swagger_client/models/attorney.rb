@@ -35,7 +35,29 @@ module SwaggerClient
     # An email address for the attorney.
     attr_accessor :email
 
+    # The email domain of the firm. Usually the right-hand side of the email address after the @-sign.
     attr_accessor :firm_domain
+
+    # Voice telephone number.
+    attr_accessor :phone
+
+    # Telephone number for a fax line.
+    attr_accessor :fax
+
+    # Date that this attorney ended their role in the case.
+    attr_accessor :terminated
+
+    # Is this attorney appear _pro hac vice_?
+    attr_accessor :pro_hac_vice
+
+    # Is this attorney designated as a 'Lead Attorney' in the case.
+    attr_accessor :lead_attorney
+
+    # Attorney appearing _pro se_.
+    attr_accessor :pro_se
+
+    # Street/mailing address for the firm.
+    attr_accessor :firm_address
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -44,7 +66,14 @@ module SwaggerClient
         :'name' => :'name',
         :'firm_name' => :'firmName',
         :'email' => :'email',
-        :'firm_domain' => :'firmDomain'
+        :'firm_domain' => :'firmDomain',
+        :'phone' => :'phone',
+        :'fax' => :'fax',
+        :'terminated' => :'terminated',
+        :'pro_hac_vice' => :'proHacVice',
+        :'lead_attorney' => :'leadAttorney',
+        :'pro_se' => :'proSe',
+        :'firm_address' => :'firmAddress'
       }
     end
 
@@ -54,7 +83,14 @@ module SwaggerClient
         :'name' => :'String',
         :'firm_name' => :'String',
         :'email' => :'String',
-        :'firm_domain' => :'String'
+        :'firm_domain' => :'String',
+        :'phone' => :'String',
+        :'fax' => :'String',
+        :'terminated' => :'Date',
+        :'pro_hac_vice' => :'BOOLEAN',
+        :'lead_attorney' => :'BOOLEAN',
+        :'pro_se' => :'BOOLEAN',
+        :'firm_address' => :'String'
       }
     end
 
@@ -82,6 +118,34 @@ module SwaggerClient
         self.firm_domain = attributes[:'firmDomain']
       end
 
+      if attributes.has_key?(:'phone')
+        self.phone = attributes[:'phone']
+      end
+
+      if attributes.has_key?(:'fax')
+        self.fax = attributes[:'fax']
+      end
+
+      if attributes.has_key?(:'terminated')
+        self.terminated = attributes[:'terminated']
+      end
+
+      if attributes.has_key?(:'proHacVice')
+        self.pro_hac_vice = attributes[:'proHacVice']
+      end
+
+      if attributes.has_key?(:'leadAttorney')
+        self.lead_attorney = attributes[:'leadAttorney']
+      end
+
+      if attributes.has_key?(:'proSe')
+        self.pro_se = attributes[:'proSe']
+      end
+
+      if attributes.has_key?(:'firmAddress')
+        self.firm_address = attributes[:'firmAddress']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -105,7 +169,14 @@ module SwaggerClient
           name == o.name &&
           firm_name == o.firm_name &&
           email == o.email &&
-          firm_domain == o.firm_domain
+          firm_domain == o.firm_domain &&
+          phone == o.phone &&
+          fax == o.fax &&
+          terminated == o.terminated &&
+          pro_hac_vice == o.pro_hac_vice &&
+          lead_attorney == o.lead_attorney &&
+          pro_se == o.pro_se &&
+          firm_address == o.firm_address
     end
 
     # @see the `==` method
@@ -117,7 +188,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, firm_name, email, firm_domain].hash
+      [name, firm_name, email, firm_domain, phone, fax, terminated, pro_hac_vice, lead_attorney, pro_se, firm_address].hash
     end
 
     # Builds the object from hash
