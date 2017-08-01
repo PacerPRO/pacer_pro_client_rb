@@ -31,6 +31,7 @@ require 'swagger_client/configuration'
 require 'swagger_client/models/empty'
 require 'swagger_client/models/error'
 require 'swagger_client/models/matter'
+require 'swagger_client/models/model_case'
 require 'swagger_client/models/session'
 require 'swagger_client/models/user'
 

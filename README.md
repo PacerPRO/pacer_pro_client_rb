@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::Empty](docs/Empty.md)
  - [SwaggerClient::Error](docs/Error.md)
  - [SwaggerClient::Matter](docs/Matter.md)
+ - [SwaggerClient::ModelCase](docs/ModelCase.md)
  - [SwaggerClient::Session](docs/Session.md)
  - [SwaggerClient::User](docs/User.md)
 
