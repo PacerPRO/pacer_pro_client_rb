@@ -460,6 +460,48 @@
       "title" : "Matter",
       "description" : "An object that represents a matter, i.e., a case in federal court, joined with client matter identification."
     },
+    "Party" : {
+      "type" : "object",
+      "properties" : {
+        "role" : {
+          "type" : "string",
+          "description" : "e.g. Defednant, Plaintiff, etc."
+        },
+        "client" : {
+          "type" : "string",
+          "description" : "The name of the client in this role."
+        },
+        "attorneys" : {
+          "type" : "array",
+          "description" : "A list of attorneys representing the client.",
+          "items" : {
+            "$ref" : "#/definitions/Attorney"
+          }
+        }
+      }
+    },
+    "Attorney" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the attorney."
+        },
+        "firmName" : {
+          "type" : "string",
+          "description" : "The name of the firm where the attorney works. May refer to the attorney if acting as sole practioner."
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "An email address for the attorney."
+        },
+        "firmDomain" : {
+          "type" : "string",
+          "format" : "hostname"
+        }
+      }
+    },
     "User" : {
       "type" : "object",
       "required" : [ "email", "password" ],
