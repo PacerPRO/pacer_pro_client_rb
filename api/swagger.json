@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "PacerPro API documentation.",
-    "version" : "0.2.1",
+    "version" : "0.3.0",
     "title" : "PacerPro",
     "contact" : {
       "email" : "ken@pacerpro.com"
@@ -369,6 +369,33 @@
           "type" : "string",
           "format" : "date-time",
           "description" : "The time of last activity in the case. "
+        },
+        "referral" : {
+          "type" : "string",
+          "description" : "Referral to a magistrate judge. See [Rule 59](https://www.law.cornell.edu/rules/frcrmp/rule_59)"
+        },
+        "filedDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date filed with the court."
+        },
+        "lastFiledDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date of the most recent filing. May be after the closedDate."
+        },
+        "closedDate" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date that the case was closed by the court. There may still be activity long after this date."
+        },
+        "chapter" : {
+          "type" : "string",
+          "description" : "Bankruptcy only. Refers to the chapter of the Bankruptcy Code."
+        },
+        "relatedBankruptcyCaseNumber" : {
+          "type" : "string",
+          "description" : "Case number of related case."
         }
       },
       "title" : "Matter",
