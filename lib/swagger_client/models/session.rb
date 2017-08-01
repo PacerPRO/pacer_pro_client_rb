@@ -26,7 +26,7 @@ require 'date'
 module SwaggerClient
   # An object to create or maintain a session.
   class Session
-    # JSON Web Token see https://jwt.io. Add to the request header. Provided by server.
+    # JSON Web Token, see https://jwt.io. Add to the request header. Provided by server.
     attr_accessor :jwt_token
 
     # ISO8601 timestamp when the jwtToken expires
