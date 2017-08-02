@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::AuthenticationApi* | [**session_refresh**](docs/AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
 *SwaggerClient::CasesApi* | [**cases_get_collection**](docs/CasesApi.md#cases_get_collection) | **GET** /cases | A collection of cases.
 *SwaggerClient::CasesApi* | [**cases_get_one**](docs/CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
+*SwaggerClient::CasesApi* | [**cases_get_parties**](docs/CasesApi.md#cases_get_parties) | **GET** /cases/{caseId}/parties | A table of parties.
 *SwaggerClient::MattersApi* | [**matters_get_collection**](docs/MattersApi.md#matters_get_collection) | **GET** /matters | A collection of matters.
 *SwaggerClient::MattersApi* | [**matters_get_one**](docs/MattersApi.md#matters_get_one) | **GET** /matters/{matterId} | A single matter.
 

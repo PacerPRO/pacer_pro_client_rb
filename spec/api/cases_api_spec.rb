@@ -68,4 +68,17 @@ describe 'CasesApi' do
     end
   end
 
+  # unit tests for cases_get_parties
+  # A table of parties.
+  # A parsed, structured table of the listed parties in the case.
+  # @param case_id The database identifier of the case.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [Array<Party>]
+  describe 'cases_get_parties test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
