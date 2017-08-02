@@ -39,6 +39,7 @@ require 'swagger_client/models/user'
 
 # APIs
 require 'swagger_client/api/authentication_api'
+require 'swagger_client/api/cases_api'
 require 'swagger_client/api/matters_api'
 
 module SwaggerClient

@@ -78,6 +78,8 @@ Class | Method | HTTP request | Description
 *SwaggerClient::AuthenticationApi* | [**session_create**](docs/AuthenticationApi.md#session_create) | **POST** /session | Initial authentication.
 *SwaggerClient::AuthenticationApi* | [**session_delete**](docs/AuthenticationApi.md#session_delete) | **DELETE** /session | Revoke all JWT tokens (logout).
 *SwaggerClient::AuthenticationApi* | [**session_refresh**](docs/AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
+*SwaggerClient::CasesApi* | [**cases_get_collection**](docs/CasesApi.md#cases_get_collection) | **GET** /cases | A collection of cases.
+*SwaggerClient::CasesApi* | [**cases_get_one**](docs/CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
 *SwaggerClient::MattersApi* | [**matters_get_collection**](docs/MattersApi.md#matters_get_collection) | **GET** /matters | A collection of matters.
 *SwaggerClient::MattersApi* | [**matters_get_one**](docs/MattersApi.md#matters_get_one) | **GET** /matters/{matterId} | A single matter.
 
