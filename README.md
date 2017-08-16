@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::Attorney](docs/Attorney.md)
  - [SwaggerClient::Empty](docs/Empty.md)
  - [SwaggerClient::Error](docs/Error.md)
+ - [SwaggerClient::Firm](docs/Firm.md)
  - [SwaggerClient::Matter](docs/Matter.md)
  - [SwaggerClient::ModelCase](docs/ModelCase.md)
  - [SwaggerClient::Party](docs/Party.md)
