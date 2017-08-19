@@ -135,8 +135,8 @@ module SwaggerClient
 
     def initialize
       @scheme = 'https'
-      @host = 'api.pacerpro.com'
-      @base_path = '/v1'
+      @host = 'sdx94nst9f.execute-api.us-east-1.amazonaws.com'
+      @base_path = '/qa'
       @api_key = {}
       @api_key_prefix = {}
       @timeout = 0
