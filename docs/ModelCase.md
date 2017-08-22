@@ -1,11 +1,10 @@
-# PacerProClient::Matter
+# PacerProClient::ModelCase
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Database identifier of the object. | [optional] 
 **case_id** | **String** | Database identifier of the Case object. | [optional] 
-**client_matter_number** | **String** | Client/matter billing code. | [optional] 
 **judge** | **String** | Initials of the presiding judge. | [optional] 
 **case_number** | **String** | Canonical case number. | [optional] 
 **case_title** | **String** | Canonical case title. | [optional] 

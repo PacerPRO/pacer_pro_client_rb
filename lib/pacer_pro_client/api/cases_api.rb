@@ -24,147 +24,34 @@ limitations under the License.
 require "uri"
 
 module PacerProClient
-  class AuthenticationApi
+  class CasesApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
 
-    # Initial authentication.
-    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email & password) in the User object. You will get a Session object in return.
-    # @param user User credentials
+    # A collection of cases.
+    # Get all cases related to your account.
     # @param [Hash] opts the optional parameters
-    # @return [Session]
-    def session_create(user, opts = {})
-      data, _status_code, _headers = session_create_with_http_info(user, opts)
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Array<ModelCase>]
+    def cases_get_collection(opts = {})
+      data, _status_code, _headers = cases_get_collection_with_http_info(opts)
       return data
     end
 
-    # Initial authentication.
-    # Use this call to generate an authorization token for use in future calls. Provide your PacerPro credentials (email &amp; password) in the User object. You will get a Session object in return.
-    # @param user User credentials
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_create_with_http_info(user, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_create ..."
-      end
-      # verify the required parameter 'user' is set
-      fail ArgumentError, "Missing the required parameter 'user' when calling AuthenticationApi.session_create" if user.nil?
-      # resource path
-      local_var_path = "/session".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(user)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Session')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#session_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Revoke all JWT tokens (logout).
-    # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
+    # A collection of cases.
+    # Get all cases related to your account.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Empty]
-    def session_delete(opts = {})
-      data, _status_code, _headers = session_delete_with_http_info(opts)
-      return data
-    end
-
-    # Revoke all JWT tokens (logout).
-    # Revoke JWT tokens by spinning a new JTI. All current tokens will no longer work.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Array<(Empty, Fixnum, Hash)>] Empty data, response status code and response headers
-    def session_delete_with_http_info(opts = {})
+    # @return [Array<(Array<ModelCase>, Fixnum, Hash)>] Array<ModelCase> data, response status code and response headers
+    def cases_get_collection_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_delete ..."
+        @api_client.config.logger.debug "Calling API: CasesApi.cases_get_collection ..."
       end
       # resource path
-      local_var_path = "/session".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = []
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = []
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['Bearer']
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Empty')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#session_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Refresh authentication token
-    # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Session]
-    def session_refresh(opts = {})
-      data, _status_code, _headers = session_refresh_with_http_info(opts)
-      return data
-    end
-
-    # Refresh authentication token
-    # Using a valid auth token, you can use this to refresh it, thus extending the time unti it expires. See POST /session for instructions on the initial authentication.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authorization Bearer {...JSON Web Token...}
-    # @return [Array<(Session, Fixnum, Hash)>] Session data, response status code and response headers
-    def session_refresh_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AuthenticationApi.session_refresh ..."
-      end
-      # resource path
-      local_var_path = "/session".sub('{format}','json')
+      local_var_path = "/cases".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -193,9 +80,129 @@ module PacerProClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Session')
+        :return_type => 'Array<ModelCase>')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#session_refresh\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CasesApi#cases_get_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # A single case.
+    # Get a single case, specified by `caseId` in the path.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [ModelCase]
+    def cases_get_one(case_id, opts = {})
+      data, _status_code, _headers = cases_get_one_with_http_info(case_id, opts)
+      return data
+    end
+
+    # A single case.
+    # Get a single case, specified by &#x60;caseId&#x60; in the path.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Array<(ModelCase, Fixnum, Hash)>] ModelCase data, response status code and response headers
+    def cases_get_one_with_http_info(case_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CasesApi.cases_get_one ..."
+      end
+      # verify the required parameter 'case_id' is set
+      fail ArgumentError, "Missing the required parameter 'case_id' when calling CasesApi.cases_get_one" if case_id.nil?
+      # resource path
+      local_var_path = "/cases/{caseId}".sub('{format}','json').sub('{' + 'caseId' + '}', case_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ModelCase')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CasesApi#cases_get_one\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # A table of parties.
+    # A parsed, structured table of the listed parties in the case.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Array<Party>]
+    def cases_get_parties(case_id, opts = {})
+      data, _status_code, _headers = cases_get_parties_with_http_info(case_id, opts)
+      return data
+    end
+
+    # A table of parties.
+    # A parsed, structured table of the listed parties in the case.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @return [Array<(Array<Party>, Fixnum, Hash)>] Array<Party> data, response status code and response headers
+    def cases_get_parties_with_http_info(case_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CasesApi.cases_get_parties ..."
+      end
+      # verify the required parameter 'case_id' is set
+      fail ArgumentError, "Missing the required parameter 'case_id' when calling CasesApi.cases_get_parties" if case_id.nil?
+      # resource path
+      local_var_path = "/cases/{caseId}/parties".sub('{format}','json').sub('{' + 'caseId' + '}', case_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Party>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CasesApi#cases_get_parties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

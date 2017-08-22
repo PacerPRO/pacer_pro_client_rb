@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pacer_pro_client (0.2.1)
+    pacer_pro_client (0.3.0)
       json (~> 1.8, >= 1.8.3)
       typhoeus (~> 1.0, >= 1.0.1)
 

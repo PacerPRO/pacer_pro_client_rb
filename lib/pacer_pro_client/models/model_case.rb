@@ -24,16 +24,13 @@ limitations under the License.
 require 'date'
 
 module PacerProClient
-  # An object that represents a matter, i.e., a case in federal court, joined with client matter identification.
-  class Matter
+  # An object that represents a matter, i.e., a case in federal court.
+  class ModelCase
     # Database identifier of the object.
     attr_accessor :id
 
     # Database identifier of the Case object.
     attr_accessor :case_id
-
-    # Client/matter billing code.
-    attr_accessor :client_matter_number
 
     # Initials of the presiding judge.
     attr_accessor :judge
@@ -77,7 +74,6 @@ module PacerProClient
       {
         :'id' => :'id',
         :'case_id' => :'caseId',
-        :'client_matter_number' => :'clientMatterNumber',
         :'judge' => :'judge',
         :'case_number' => :'caseNumber',
         :'case_title' => :'caseTitle',
@@ -98,7 +94,6 @@ module PacerProClient
       {
         :'id' => :'String',
         :'case_id' => :'String',
-        :'client_matter_number' => :'String',
         :'judge' => :'String',
         :'case_number' => :'String',
         :'case_title' => :'String',
@@ -128,10 +123,6 @@ module PacerProClient
 
       if attributes.has_key?(:'caseId')
         self.case_id = attributes[:'caseId']
-      end
-
-      if attributes.has_key?(:'clientMatterNumber')
-        self.client_matter_number = attributes[:'clientMatterNumber']
       end
 
       if attributes.has_key?(:'judge')
@@ -204,7 +195,6 @@ module PacerProClient
       self.class == o.class &&
           id == o.id &&
           case_id == o.case_id &&
-          client_matter_number == o.client_matter_number &&
           judge == o.judge &&
           case_number == o.case_number &&
           case_title == o.case_title &&
@@ -228,7 +218,7 @@ module PacerProClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, case_id, client_matter_number, judge, case_number, case_title, nature_of_suit, docket_entries, activity_at, referral, filed_date, last_filed_date, closed_date, chapter, related_bankruptcy_case_number].hash
+      [id, case_id, judge, case_number, case_title, nature_of_suit, docket_entries, activity_at, referral, filed_date, last_filed_date, closed_date, chapter, related_bankruptcy_case_number].hash
     end
 
     # Builds the object from hash

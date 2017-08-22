@@ -24,93 +24,33 @@ limitations under the License.
 require 'date'
 
 module PacerProClient
-  # An object that represents a matter, i.e., a case in federal court, joined with client matter identification.
-  class Matter
-    # Database identifier of the object.
-    attr_accessor :id
 
-    # Database identifier of the Case object.
-    attr_accessor :case_id
+  class Party
+    # e.g. Defednant, Plaintiff, etc.
+    attr_accessor :role
 
-    # Client/matter billing code.
-    attr_accessor :client_matter_number
+    # The name of the client in this role.
+    attr_accessor :name
 
-    # Initials of the presiding judge.
-    attr_accessor :judge
-
-    # Canonical case number.
-    attr_accessor :case_number
-
-    # Canonical case title.
-    attr_accessor :case_title
-
-    # Judicial Conference designation of the case.
-    attr_accessor :nature_of_suit
-
-    # The count of docket entries in the case.
-    attr_accessor :docket_entries
-
-    # The time of last activity in the case. 
-    attr_accessor :activity_at
-
-    # Referral to a magistrate judge. See [Rule 59](https://www.law.cornell.edu/rules/frcrmp/rule_59)
-    attr_accessor :referral
-
-    # Date filed with the court.
-    attr_accessor :filed_date
-
-    # Date of the most recent filing. May be after the closedDate.
-    attr_accessor :last_filed_date
-
-    # Date that the case was closed by the court. There may still be activity long after this date.
-    attr_accessor :closed_date
-
-    # Bankruptcy only. Refers to the chapter of the Bankruptcy Code.
-    attr_accessor :chapter
-
-    # Case number of related case.
-    attr_accessor :related_bankruptcy_case_number
+    # A list of attorneys representing the client.
+    attr_accessor :attorneys
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'case_id' => :'caseId',
-        :'client_matter_number' => :'clientMatterNumber',
-        :'judge' => :'judge',
-        :'case_number' => :'caseNumber',
-        :'case_title' => :'caseTitle',
-        :'nature_of_suit' => :'natureOfSuit',
-        :'docket_entries' => :'docketEntries',
-        :'activity_at' => :'activityAt',
-        :'referral' => :'referral',
-        :'filed_date' => :'filedDate',
-        :'last_filed_date' => :'lastFiledDate',
-        :'closed_date' => :'closedDate',
-        :'chapter' => :'chapter',
-        :'related_bankruptcy_case_number' => :'relatedBankruptcyCaseNumber'
+        :'role' => :'role',
+        :'name' => :'name',
+        :'attorneys' => :'attorneys'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'case_id' => :'String',
-        :'client_matter_number' => :'String',
-        :'judge' => :'String',
-        :'case_number' => :'String',
-        :'case_title' => :'String',
-        :'nature_of_suit' => :'String',
-        :'docket_entries' => :'Integer',
-        :'activity_at' => :'DateTime',
-        :'referral' => :'String',
-        :'filed_date' => :'DateTime',
-        :'last_filed_date' => :'DateTime',
-        :'closed_date' => :'DateTime',
-        :'chapter' => :'String',
-        :'related_bankruptcy_case_number' => :'String'
+        :'role' => :'String',
+        :'name' => :'String',
+        :'attorneys' => :'Array<Attorney>'
       }
     end
 
@@ -122,64 +62,18 @@ module PacerProClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'role')
+        self.role = attributes[:'role']
       end
 
-      if attributes.has_key?(:'caseId')
-        self.case_id = attributes[:'caseId']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'clientMatterNumber')
-        self.client_matter_number = attributes[:'clientMatterNumber']
-      end
-
-      if attributes.has_key?(:'judge')
-        self.judge = attributes[:'judge']
-      end
-
-      if attributes.has_key?(:'caseNumber')
-        self.case_number = attributes[:'caseNumber']
-      end
-
-      if attributes.has_key?(:'caseTitle')
-        self.case_title = attributes[:'caseTitle']
-      end
-
-      if attributes.has_key?(:'natureOfSuit')
-        self.nature_of_suit = attributes[:'natureOfSuit']
-      end
-
-      if attributes.has_key?(:'docketEntries')
-        self.docket_entries = attributes[:'docketEntries']
-      end
-
-      if attributes.has_key?(:'activityAt')
-        self.activity_at = attributes[:'activityAt']
-      end
-
-      if attributes.has_key?(:'referral')
-        self.referral = attributes[:'referral']
-      end
-
-      if attributes.has_key?(:'filedDate')
-        self.filed_date = attributes[:'filedDate']
-      end
-
-      if attributes.has_key?(:'lastFiledDate')
-        self.last_filed_date = attributes[:'lastFiledDate']
-      end
-
-      if attributes.has_key?(:'closedDate')
-        self.closed_date = attributes[:'closedDate']
-      end
-
-      if attributes.has_key?(:'chapter')
-        self.chapter = attributes[:'chapter']
-      end
-
-      if attributes.has_key?(:'relatedBankruptcyCaseNumber')
-        self.related_bankruptcy_case_number = attributes[:'relatedBankruptcyCaseNumber']
+      if attributes.has_key?(:'attorneys')
+        if (value = attributes[:'attorneys']).is_a?(Array)
+          self.attorneys = value
+        end
       end
 
     end
@@ -202,21 +96,9 @@ module PacerProClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          case_id == o.case_id &&
-          client_matter_number == o.client_matter_number &&
-          judge == o.judge &&
-          case_number == o.case_number &&
-          case_title == o.case_title &&
-          nature_of_suit == o.nature_of_suit &&
-          docket_entries == o.docket_entries &&
-          activity_at == o.activity_at &&
-          referral == o.referral &&
-          filed_date == o.filed_date &&
-          last_filed_date == o.last_filed_date &&
-          closed_date == o.closed_date &&
-          chapter == o.chapter &&
-          related_bankruptcy_case_number == o.related_bankruptcy_case_number
+          role == o.role &&
+          name == o.name &&
+          attorneys == o.attorneys
     end
 
     # @see the `==` method
@@ -228,7 +110,7 @@ module PacerProClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, case_id, client_matter_number, judge, case_number, case_title, nature_of_suit, docket_entries, activity_at, referral, filed_date, last_filed_date, closed_date, chapter, related_bankruptcy_case_number].hash
+      [role, name, attorneys].hash
     end
 
     # Builds the object from hash
