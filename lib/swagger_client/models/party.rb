@@ -26,9 +26,6 @@ require 'date'
 module SwaggerClient
 
   class Party
-    # Unique identifier of party. Hash of clientName, role, representing firm(s), caseId? Do we parse 'a Deleware LLC'?
-    attr_accessor :key
-
     # e.g. Defednant, Plaintiff, etc.
     attr_accessor :role
 
@@ -38,29 +35,22 @@ module SwaggerClient
     # A list of attorneys representing the client.
     attr_accessor :attorneys
 
-    # A list of firms (extracted from attorneys.
-    attr_accessor :firms
-
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'key' => :'key',
         :'role' => :'role',
         :'name' => :'name',
-        :'attorneys' => :'attorneys',
-        :'firms' => :'firms'
+        :'attorneys' => :'attorneys'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'key' => :'String',
         :'role' => :'String',
         :'name' => :'String',
-        :'attorneys' => :'Array<Attorney>',
-        :'firms' => :'Array<Firm>'
+        :'attorneys' => :'Array<Attorney>'
       }
     end
 
@@ -71,10 +61,6 @@ module SwaggerClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
-
-      if attributes.has_key?(:'key')
-        self.key = attributes[:'key']
-      end
 
       if attributes.has_key?(:'role')
         self.role = attributes[:'role']
@@ -87,12 +73,6 @@ module SwaggerClient
       if attributes.has_key?(:'attorneys')
         if (value = attributes[:'attorneys']).is_a?(Array)
           self.attorneys = value
-        end
-      end
-
-      if attributes.has_key?(:'firms')
-        if (value = attributes[:'firms']).is_a?(Array)
-          self.firms = value
         end
       end
 
@@ -116,11 +96,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          key == o.key &&
           role == o.role &&
           name == o.name &&
-          attorneys == o.attorneys &&
-          firms == o.firms
+          attorneys == o.attorneys
     end
 
     # @see the `==` method
@@ -132,7 +110,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [key, role, name, attorneys, firms].hash
+      [role, name, attorneys].hash
     end
 
     # Builds the object from hash
