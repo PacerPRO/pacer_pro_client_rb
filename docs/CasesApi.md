@@ -1,4 +1,4 @@
-# SwaggerClient::CasesApi
+# PacerProClient::CasesApi
 
 All URIs are relative to *https://sdx94nst9f.execute-api.us-east-1.amazonaws.com/qa*
 
@@ -19,16 +19,16 @@ Get all cases related to your account.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CasesApi.new
+api_instance = PacerProClient::CasesApi.new
 
 opts = { 
   authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
@@ -38,7 +38,7 @@ begin
   #A collection of cases.
   result = api_instance.cases_get_collection(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling CasesApi->cases_get_collection: #{e}"
 end
 ```
@@ -74,16 +74,16 @@ Get a single case, specified by `caseId` in the path.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CasesApi.new
+api_instance = PacerProClient::CasesApi.new
 
 case_id = "case_id_example" # String | The database identifier of the case.
 
@@ -95,7 +95,7 @@ begin
   #A single case.
   result = api_instance.cases_get_one(case_id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling CasesApi->cases_get_one: #{e}"
 end
 ```
@@ -132,16 +132,16 @@ A parsed, structured table of the listed parties in the case.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CasesApi.new
+api_instance = PacerProClient::CasesApi.new
 
 case_id = "case_id_example" # String | The database identifier of the case.
 
@@ -153,7 +153,7 @@ begin
   #A table of parties.
   result = api_instance.cases_get_parties(case_id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling CasesApi->cases_get_parties: #{e}"
 end
 ```

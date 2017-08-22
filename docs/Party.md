@@ -1,4 +1,4 @@
-# SwaggerClient::Party
+# PacerProClient::Party
 
 ## Properties
 Name | Type | Description | Notes

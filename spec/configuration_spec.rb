@@ -23,14 +23,14 @@ limitations under the License.
 
 require 'spec_helper'
 
-describe SwaggerClient::Configuration do
-  let(:config) { SwaggerClient::Configuration.default }
+describe PacerProClient::Configuration do
+  let(:config) { PacerProClient::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     #require 'URI'
     #uri = URI.parse("https://sdx94nst9f.execute-api.us-east-1.amazonaws.com/qa")
-    #SwaggerClient.configure do |c|
+    #PacerProClient.configure do |c|
     #  c.host = uri.host
     #  c.base_path = uri.path
     #end
