@@ -30,6 +30,7 @@ require 'json'
 describe 'CasesApi' do
   let(:api_client) { authenticate_for_testing }
   let(:cases) { @instance.cases_get_collection() }
+  let(:sample_case_id) { 1 }
 
   before do
     # run before each test
@@ -71,6 +72,25 @@ describe 'CasesApi' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
       kase = cases.first
       expect(@instance.cases_get_one(kase.id)).to be_instance_of(PacerProClient::ModelCase)
+    end
+
+    it 'returns expected value' do
+      kase = @instance.cases_get_one(sample_case_id)
+      expect(kase).to be_instance_of(PacerProClient::ModelCase)
+
+      expect(kase.id).to eq('1')
+      expect(kase.judge).to eq('LHK')
+      expect(kase.case_number).to eq('5:11-cv-01846-LHK')
+      expect(kase.case_title).to eq('Apple Inc. v. Samsung Electronics Co. Ltd. et al')
+      expect(kase.nature_of_suit).to eq('830 Patent')
+      expect(kase.docket_entries).to eq(3582)
+      expect(kase.activity_at).to eq(DateTime.new(2017, 8, 23, 17, 39, 16).new_offset(-4.0/24))
+      expect(kase.referral).to eq('Magistrate Judge Paul Singh Grewal')
+      expect(kase.filed_date).to eq(Date.new(2011, 4, 15))
+      expect(kase.last_filed_date).to eq(nil)
+      expect(kase.closed_date).to eq(Date.new(2016, 3, 24))
+      expect(kase.chapter).to eq(nil)
+      expect(kase.related_bankruptcy_case_number).to eq(nil)
     end
   end
 
