@@ -26,7 +26,7 @@ require 'date'
 module PacerProClient
 
   class Party
-    # e.g. Defednant, Plaintiff, etc.
+    # e.g. Defendant, Plaintiff, etc.
     attr_accessor :role
 
     # The name of the client in this role.
