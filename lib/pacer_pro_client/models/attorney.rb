@@ -47,9 +47,6 @@ module PacerProClient
     # The email domain of the firm. Usually the right-hand side of the email address after the @-sign.
     attr_accessor :firm_domain
 
-    # Date that this attorney first appeared on this case. Might be a docket entry when they appeared, or _pro hac vice_, or none of the above.
-    attr_accessor :appeared_at
-
     # Date that this attorney ended their role in the case.
     attr_accessor :terminated
 
@@ -73,7 +70,6 @@ module PacerProClient
         :'fax' => :'fax',
         :'email' => :'email',
         :'firm_domain' => :'firmDomain',
-        :'appeared_at' => :'appearedAt',
         :'terminated' => :'terminated',
         :'pro_hac_vice' => :'proHacVice',
         :'lead_attorney' => :'leadAttorney',
@@ -91,7 +87,6 @@ module PacerProClient
         :'fax' => :'String',
         :'email' => :'String',
         :'firm_domain' => :'String',
-        :'appeared_at' => :'Date',
         :'terminated' => :'Date',
         :'pro_hac_vice' => :'BOOLEAN',
         :'lead_attorney' => :'BOOLEAN',
@@ -133,10 +128,6 @@ module PacerProClient
 
       if attributes.has_key?(:'firmDomain')
         self.firm_domain = attributes[:'firmDomain']
-      end
-
-      if attributes.has_key?(:'appearedAt')
-        self.appeared_at = attributes[:'appearedAt']
       end
 
       if attributes.has_key?(:'terminated')
@@ -182,7 +173,6 @@ module PacerProClient
           fax == o.fax &&
           email == o.email &&
           firm_domain == o.firm_domain &&
-          appeared_at == o.appeared_at &&
           terminated == o.terminated &&
           pro_hac_vice == o.pro_hac_vice &&
           lead_attorney == o.lead_attorney &&
@@ -198,7 +188,7 @@ module PacerProClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, firm_name, firm_address, phone, fax, email, firm_domain, appeared_at, terminated, pro_hac_vice, lead_attorney, pro_se].hash
+      [name, firm_name, firm_address, phone, fax, email, firm_domain, terminated, pro_hac_vice, lead_attorney, pro_se].hash
     end
 
     # Builds the object from hash
