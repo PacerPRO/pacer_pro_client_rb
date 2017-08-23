@@ -55,7 +55,6 @@ describe 'MattersApi' do
   describe 'matters_get_collection test' do
     it "should work" do
       expect(@instance.matters_get_collection).to all(be_a(PacerProClient::Matter))
-      expect(matters.first).to be_instance_of(PacerProClient::Matter)
     end
   end
 
