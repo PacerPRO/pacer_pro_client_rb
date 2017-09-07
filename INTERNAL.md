@@ -41,3 +41,20 @@ You'll need a copy of the current SSL certs, host name and the ngrok auth token.
 - Update `version.rb` to match API version (add a fourth quad if neccessary)
 - `rake README.md` will update the version number in the file, etc.
 - `git flow feature finish {trackerId}` (or publish, then pull request)
+
+## Checklist
+
+- [ ] Authorization Header (swagger & aws)
+- [ ] Pagination query parameters (swagger & aws)
+- [ ] tag
+- [ ] summary
+- [ ] description
+- [ ] operationId
+- [ ] produces
+- [ ] responses
+- [ ] new models
+- [ ] ...
+- [ ] version number
+- [ ] notify stakeholders
+- [ ] generate Ruby SDK
+- [ ] integration tests vis a vis pacer_pro_client_rb
