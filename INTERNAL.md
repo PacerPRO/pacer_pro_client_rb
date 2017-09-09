@@ -44,6 +44,26 @@ You'll need a copy of the current SSL certs, host name and the ngrok auth token.
 
 ## Checklist
 
+### Starting a new API version
+
+- [ ] Update version number
+- [ ] Use development/qa host & basePath
+
+(Plug menu) Integrations
+
+- [ ] Copy Amazon API integration settings
+- [ ] Copy GitHub Sync (ruby client) integration settings
+- [ ] Copy GitHub Sync (swagger.json) integration settings
+- [ ] Copy Style Validator integration settings
+
+(Gear menu) Settings
+
+- [ ] Copy API Info
+- [ ] Copy GitHub Push
+- [ ] Copy Codegen options
+
+### Every operation must have
+
 - [ ] Authorization Header (swagger & aws)
 - [ ] Pagination query parameters (swagger & aws)
 - [ ] tag
@@ -53,8 +73,13 @@ You'll need a copy of the current SSL certs, host name and the ngrok auth token.
 - [ ] produces
 - [ ] responses
 - [ ] new models
-- [ ] ...
-- [ ] version number
-- [ ] notify stakeholders
+
+### Integration testing & QA
+
 - [ ] generate Ruby SDK
 - [ ] integration tests vis a vis pacer_pro_client_rb
+
+### Pre-release checklist
+
+- [ ] Use production host & basePath
+- [ ] notify stakeholders of release & date (changes, breaking changes, updates, additions, etc.)
