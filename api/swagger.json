@@ -659,6 +659,12 @@
         "relatedBankruptcyCaseNumber" : {
           "type" : "string",
           "description" : "Case number of related case."
+        },
+        "parties" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Party"
+          }
         }
       },
       "title" : "Matter",
