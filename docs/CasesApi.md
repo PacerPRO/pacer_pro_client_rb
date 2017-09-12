@@ -1,6 +1,6 @@
 # PacerProClient::CasesApi
 
-All URIs are relative to *https://api.pacerpro.com/v1*
+All URIs are relative to *https://sdx94nst9f.execute-api.us-east-1.amazonaws.com/qa*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,9 @@ end
 api_instance = PacerProClient::CasesApi.new
 
 opts = { 
-  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
+  authorization: "authorization_example", # String | Bearer {...JSON Web Token...}
+  page: 1, # Integer | Page number
+  limit: 20 # Integer | Limit number of objects returned per page
 }
 
 begin
@@ -48,6 +50,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+ **page** | **Integer**| Page number | [optional] [default to 1]
+ **limit** | **Integer**| Limit number of objects returned per page | [optional] [default to 20]
 
 ### Return type
 

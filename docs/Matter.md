@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **closed_date** | **DateTime** | Date that the case was closed by the court. There may still be activity long after this date. | [optional] 
 **chapter** | **String** | Bankruptcy only. Refers to the chapter of the Bankruptcy Code. | [optional] 
 **related_bankruptcy_case_number** | **String** | Case number of related case. | [optional] 
+**parties** | [**Array&lt;Party&gt;**](Party.md) |  | [optional] 
 
 
