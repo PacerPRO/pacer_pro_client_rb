@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **docket_entry_number** | **Integer** | The docket entry number. | [optional] 
 **documents_count** | **Integer** | The number of documents in the docket entry. | [optional] 
 **docket_report_order** | **Integer** | The order of this docket entry in the docket report. | [optional] 
-**documents** | [**Array&lt;DocketEntry&gt;**](DocketEntry.md) |  | [optional] 
+**documents** | [**Array&lt;Document&gt;**](Document.md) |  | [optional] 
 
 

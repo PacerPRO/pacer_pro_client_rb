@@ -64,7 +64,7 @@ module PacerProClient
         :'docket_entry_number' => :'Integer',
         :'documents_count' => :'Integer',
         :'docket_report_order' => :'Integer',
-        :'documents' => :'Array<DocketEntry>'
+        :'documents' => :'Array<Document>'
       }
     end
 
