@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 
  - [PacerProClient::Attorney](docs/Attorney.md)
  - [PacerProClient::DocketEntry](docs/DocketEntry.md)
+ - [PacerProClient::Document](docs/Document.md)
  - [PacerProClient::Empty](docs/Empty.md)
  - [PacerProClient::Error](docs/Error.md)
  - [PacerProClient::Firm](docs/Firm.md)

@@ -30,6 +30,7 @@ require 'pacer_pro_client/configuration'
 # Models
 require 'pacer_pro_client/models/attorney'
 require 'pacer_pro_client/models/docket_entry'
+require 'pacer_pro_client/models/document'
 require 'pacer_pro_client/models/empty'
 require 'pacer_pro_client/models/error'
 require 'pacer_pro_client/models/firm'
