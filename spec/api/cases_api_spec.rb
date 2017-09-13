@@ -57,6 +57,19 @@ describe 'CasesApi' do
     end
   end
 
+  # unit tests for cases_get_docket_entries
+  # A table of docket entries.
+  # A parsed, structured table of the docket entries in the case.
+  # @param case_id The database identifier of the case.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+  # @return [Array<DocketEntry>]
+  describe 'cases_get_docket_entries test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for cases_get_one
   # A single case.
   # Get a single case, specified by &#x60;caseId&#x60; in the path.

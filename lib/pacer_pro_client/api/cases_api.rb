@@ -93,6 +93,66 @@ module PacerProClient
       return data, status_code, headers
     end
 
+    # A table of docket entries.
+    # A parsed, structured table of the docket entries in the case.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+    # @return [Array<DocketEntry>]
+    def cases_get_docket_entries(case_id, opts = {})
+      data, _status_code, _headers = cases_get_docket_entries_with_http_info(case_id, opts)
+      return data
+    end
+
+    # A table of docket entries.
+    # A parsed, structured table of the docket entries in the case.
+    # @param case_id The database identifier of the case.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+    # @return [Array<(Array<DocketEntry>, Fixnum, Hash)>] Array<DocketEntry> data, response status code and response headers
+    def cases_get_docket_entries_with_http_info(case_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CasesApi.cases_get_docket_entries ..."
+      end
+      # verify the required parameter 'case_id' is set
+      fail ArgumentError, "Missing the required parameter 'case_id' when calling CasesApi.cases_get_docket_entries" if case_id.nil?
+      # resource path
+      local_var_path = "/cases/{caseId}/docket_entries".sub('{format}','json').sub('{' + 'caseId' + '}', case_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<DocketEntry>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CasesApi#cases_get_docket_entries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # A single case.
     # Get a single case, specified by `caseId` in the path.
     # @param case_id The database identifier of the case.

@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 *PacerProClient::AuthenticationApi* | [**session_delete**](docs/AuthenticationApi.md#session_delete) | **DELETE** /session | Revoke all JWT tokens (logout).
 *PacerProClient::AuthenticationApi* | [**session_refresh**](docs/AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
 *PacerProClient::CasesApi* | [**cases_get_collection**](docs/CasesApi.md#cases_get_collection) | **GET** /cases | A collection of cases.
+*PacerProClient::CasesApi* | [**cases_get_docket_entries**](docs/CasesApi.md#cases_get_docket_entries) | **GET** /cases/{caseId}/docket_entries | A table of docket entries.
 *PacerProClient::CasesApi* | [**cases_get_one**](docs/CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
 *PacerProClient::CasesApi* | [**cases_get_parties**](docs/CasesApi.md#cases_get_parties) | **GET** /cases/{caseId}/parties | A table of parties.
 *PacerProClient::MattersApi* | [**matters_get_collection**](docs/MattersApi.md#matters_get_collection) | **GET** /matters | A collection of matters.
@@ -88,6 +89,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [PacerProClient::Attorney](docs/Attorney.md)
+ - [PacerProClient::DocketEntry](docs/DocketEntry.md)
  - [PacerProClient::Empty](docs/Empty.md)
  - [PacerProClient::Error](docs/Error.md)
  - [PacerProClient::Firm](docs/Firm.md)
