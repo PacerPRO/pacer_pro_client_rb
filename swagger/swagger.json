@@ -339,6 +339,18 @@
           "required" : false,
           "type" : "string"
         }, {
+          "name" : "courtType",
+          "in" : "query",
+          "description" : "The court type (district, bankruptcy or appellate.)",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "clientMatterNumber",
+          "in" : "query",
+          "description" : "The client matter number.",
+          "required" : false,
+          "type" : "string"
+        }, {
           "name" : "page",
           "in" : "query",
           "description" : "Page number",
@@ -412,18 +424,6 @@
           "in" : "path",
           "description" : "The database identifier of the matter.",
           "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "courtType",
-          "in" : "query",
-          "description" : "The court type (district, bankruptcy or appellate.)",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "clientMatterNumber",
-          "in" : "query",
-          "description" : "The client matter number.",
-          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
