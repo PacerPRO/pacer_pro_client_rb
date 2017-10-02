@@ -339,6 +339,13 @@
           "required" : false,
           "type" : "string"
         }, {
+          "name" : "activityAt",
+          "in" : "query",
+          "description" : "The time of last activity in the case.",
+          "required" : false,
+          "type" : "string",
+          "format" : "date-time"
+        }, {
           "name" : "courtType",
           "in" : "query",
           "description" : "The court type (district, bankruptcy or appellate.)",
@@ -824,7 +831,7 @@
         "activityAt" : {
           "type" : "string",
           "format" : "date-time",
-          "description" : "The time of last activity in the case. "
+          "description" : "The time of last activity in the case."
         },
         "referral" : {
           "type" : "string",
