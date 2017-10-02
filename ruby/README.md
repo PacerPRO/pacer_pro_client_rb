@@ -71,7 +71,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://sdx94nst9f.execute-api.us-east-1.amazonaws.com/qa*
+All URIs are relative to *https://api.pacerpro.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
