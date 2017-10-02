@@ -345,9 +345,9 @@
           "required" : false,
           "type" : "string"
         }, {
-          "name" : "clientMatterNumber",
+          "name" : "hasClientMatterNumber",
           "in" : "query",
-          "description" : "The client matter number.",
+          "description" : "If 'yes' or 'no', restricts results to matters that have or do not have a client matter number.",
           "required" : false,
           "type" : "string"
         }, {
