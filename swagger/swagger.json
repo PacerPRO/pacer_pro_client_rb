@@ -402,9 +402,10 @@
             }
           },
           "requestParameters" : {
-            "integration.request.querystring.courtType" : "method.request.querystring.courtType",
-            "integration.request.querystring.clientMatterNumber" : "method.request.querystring.clientMatterNumber",
             "integration.request.header.Authorization" : "method.request.header.Authorization",
+            "integration.request.querystring.activityAt" : "method.request.querystring.activityAt",
+            "integration.request.querystring.courtType" : "method.request.querystring.courtType",
+            "integration.request.querystring.hasClientMatterNumber" : "method.request.querystring.hasClientMatterNumber",
             "integration.request.querystring.page" : "method.request.querystring.page",
             "integration.request.querystring.limit" : "method.request.querystring.limit"
           },
