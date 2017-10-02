@@ -316,7 +316,7 @@
           },
           "uri" : "https://${stageVariables.endpoint}/api/${stageVariables.version}/documents/{documentId}",
           "requestParameters" : {
-            "integration.request.path.caseId" : "method.request.path.documentId",
+            "integration.request.path.documentId" : "method.request.path.documentId",
             "integration.request.header.Authorization" : "method.request.header.Authorization"
           },
           "passthroughBehavior" : "when_no_match",
