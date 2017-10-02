@@ -12,8 +12,8 @@
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host" : "sdx94nst9f.execute-api.us-east-1.amazonaws.com",
-  "basePath" : "/qa",
+  "host" : "api.pacerpro.com",
+  "basePath" : "/v1",
   "schemes" : [ "https" ],
   "paths" : {
     "/cases" : {
