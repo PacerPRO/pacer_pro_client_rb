@@ -48,6 +48,7 @@ describe 'MattersApi' do
   # Get all matters relevant to the firm.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @option opts [DateTime] :activity_at The time of last activity in the case.
   # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
   # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
   # @option opts [Integer] :page Page number

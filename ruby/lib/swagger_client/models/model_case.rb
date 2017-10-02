@@ -44,7 +44,7 @@ module SwaggerClient
     # The count of docket entries in the case.
     attr_accessor :docket_entries
 
-    # The time of last activity in the case. 
+    # The time of last activity in the case.
     attr_accessor :activity_at
 
     # Referral to a magistrate judge. See [Rule 59](https://www.law.cornell.edu/rules/frcrmp/rule_59)

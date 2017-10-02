@@ -31,6 +31,7 @@ api_instance = SwaggerClient::MattersApi.new
 
 opts = { 
   authorization: "authorization_example", # String | Bearer {...JSON Web Token...}
+  activity_at: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | The time of last activity in the case.
   court_type: "court_type_example", # String | The court type (district, bankruptcy or appellate.)
   has_client_matter_number: "has_client_matter_number_example", # String | If 'yes' or 'no', restricts results to matters that have or do not have a client matter number.
   page: 1, # Integer | Page number
@@ -51,6 +52,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+ **activity_at** | **DateTime**| The time of last activity in the case. | [optional] 
  **court_type** | **String**| The court type (district, bankruptcy or appellate.) | [optional] 
  **has_client_matter_number** | **String**| If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number. | [optional] 
  **page** | **Integer**| Page number | [optional] [default to 1]

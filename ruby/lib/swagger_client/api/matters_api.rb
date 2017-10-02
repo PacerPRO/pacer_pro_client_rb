@@ -35,6 +35,7 @@ module SwaggerClient
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [DateTime] :activity_at The time of last activity in the case.
     # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
     # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
     # @option opts [Integer] :page Page number (default to 1)
@@ -49,6 +50,7 @@ module SwaggerClient
     # Get all matters relevant to the firm.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [DateTime] :activity_at The time of last activity in the case.
     # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
     # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
     # @option opts [Integer] :page Page number
@@ -63,6 +65,7 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'activityAt'] = opts[:'activity_at'] if !opts[:'activity_at'].nil?
       query_params[:'courtType'] = opts[:'court_type'] if !opts[:'court_type'].nil?
       query_params[:'hasClientMatterNumber'] = opts[:'has_client_matter_number'] if !opts[:'has_client_matter_number'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

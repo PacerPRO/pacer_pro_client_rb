@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **case_title** | **String** | Canonical case title. | [optional] 
 **nature_of_suit** | **String** | Judicial Conference designation of the case. | [optional] 
 **docket_entries** | **Integer** | The count of docket entries in the case. | [optional] 
-**activity_at** | **DateTime** | The time of last activity in the case.  | [optional] 
+**activity_at** | **DateTime** | The time of last activity in the case. | [optional] 
 **referral** | **String** | Referral to a magistrate judge. See [Rule 59](https://www.law.cornell.edu/rules/frcrmp/rule_59) | [optional] 
 **filed_date** | **DateTime** | Date filed with the court. | [optional] 
 **last_filed_date** | **DateTime** | Date of the most recent filing. May be after the closedDate. | [optional] 
