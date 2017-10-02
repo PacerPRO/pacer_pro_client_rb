@@ -36,7 +36,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
-    # @option opts [String] :client_matter_number The client matter number.
+    # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
     # @option opts [Integer] :page Page number (default to 1)
     # @option opts [Integer] :limit Limit number of objects returned per page (default to 20)
     # @return [Array<Matter>]
@@ -50,7 +50,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Token...}
     # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
-    # @option opts [String] :client_matter_number The client matter number.
+    # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
     # @option opts [Integer] :page Page number
     # @option opts [Integer] :limit Limit number of objects returned per page
     # @return [Array<(Array<Matter>, Fixnum, Hash)>] Array<Matter> data, response status code and response headers
@@ -64,7 +64,7 @@ module SwaggerClient
       # query parameters
       query_params = {}
       query_params[:'courtType'] = opts[:'court_type'] if !opts[:'court_type'].nil?
-      query_params[:'clientMatterNumber'] = opts[:'client_matter_number'] if !opts[:'client_matter_number'].nil?
+      query_params[:'hasClientMatterNumber'] = opts[:'has_client_matter_number'] if !opts[:'has_client_matter_number'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 

@@ -32,7 +32,7 @@ api_instance = SwaggerClient::MattersApi.new
 opts = { 
   authorization: "authorization_example", # String | Bearer {...JSON Web Token...}
   court_type: "court_type_example", # String | The court type (district, bankruptcy or appellate.)
-  client_matter_number: "client_matter_number_example", # String | The client matter number.
+  has_client_matter_number: "has_client_matter_number_example", # String | If 'yes' or 'no', restricts results to matters that have or do not have a client matter number.
   page: 1, # Integer | Page number
   limit: 20 # Integer | Limit number of objects returned per page
 }
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
  **court_type** | **String**| The court type (district, bankruptcy or appellate.) | [optional] 
- **client_matter_number** | **String**| The client matter number. | [optional] 
+ **has_client_matter_number** | **String**| If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number. | [optional] 
  **page** | **Integer**| Page number | [optional] [default to 1]
  **limit** | **Integer**| Limit number of objects returned per page | [optional] [default to 20]
 

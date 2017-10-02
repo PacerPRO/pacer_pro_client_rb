@@ -49,7 +49,7 @@ describe 'MattersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...JSON Web Token...}
   # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
-  # @option opts [String] :client_matter_number The client matter number.
+  # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
   # @option opts [Integer] :page Page number
   # @option opts [Integer] :limit Limit number of objects returned per page
   # @return [Array<Matter>]
