@@ -691,7 +691,10 @@
               "statusCode" : "200"
             },
             "401" : {
-              "statusCode" : "401"
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : $input.json('error') }"
+              }
             }
           },
           "uri" : "https://${stageVariables.endpoint}/accounts/sign_in",
