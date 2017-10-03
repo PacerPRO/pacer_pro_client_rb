@@ -1,4 +1,4 @@
-# SwaggerClient::Attorney
+# PacerProClient::Attorney
 
 ## Properties
 Name | Type | Description | Notes

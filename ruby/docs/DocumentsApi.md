@@ -1,4 +1,4 @@
-# SwaggerClient::DocumentsApi
+# PacerProClient::DocumentsApi
 
 All URIs are relative to *https://api.pacerpro.com/v1*
 
@@ -17,16 +17,16 @@ Get a single document, specified by `documentId` in the path.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DocumentsApi.new
+api_instance = PacerProClient::DocumentsApi.new
 
 document_id = "document_id_example" # String | The database identifier of the document.
 
@@ -38,7 +38,7 @@ begin
   #A single document.
   result = api_instance.documents_get_one(document_id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling DocumentsApi->documents_get_one: #{e}"
 end
 ```

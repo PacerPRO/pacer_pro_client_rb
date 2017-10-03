@@ -1,4 +1,4 @@
-# SwaggerClient::DocketEntry
+# PacerProClient::DocketEntry
 
 ## Properties
 Name | Type | Description | Notes

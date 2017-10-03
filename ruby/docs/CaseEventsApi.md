@@ -1,4 +1,4 @@
-# SwaggerClient::CaseEventsApi
+# PacerProClient::CaseEventsApi
 
 All URIs are relative to *https://api.pacerpro.com/v1*
 
@@ -18,16 +18,16 @@ Get case events for your organization.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CaseEventsApi.new
+api_instance = PacerProClient::CaseEventsApi.new
 
 opts = { 
   authorization: "authorization_example", # String | Bearer {...JSON Web Token...}
@@ -40,7 +40,7 @@ begin
   #A collection of case events.
   result = api_instance.case_events_get_collection(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling CaseEventsApi->case_events_get_collection: #{e}"
 end
 ```
@@ -79,16 +79,16 @@ Get a single case event, specified by `caseEventId` in the path.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'pacer_pro_client'
 # setup authorization
-SwaggerClient.configure do |config|
+PacerProClient.configure do |config|
   # Configure API key authorization: Bearer
   config.api_key['Authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::CaseEventsApi.new
+api_instance = PacerProClient::CaseEventsApi.new
 
 case_event_id = "case_event_id_example" # String | The database identifier of the case event.
 
@@ -100,7 +100,7 @@ begin
   #A single case event.
   result = api_instance.case_events_get_one(case_event_id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue PacerProClient::ApiError => e
   puts "Exception when calling CaseEventsApi->case_events_get_one: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# SwaggerClient::CaseEvent
+# PacerProClient::CaseEvent
 
 ## Properties
 Name | Type | Description | Notes
