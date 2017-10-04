@@ -492,7 +492,10 @@
               }
             },
             "404" : {
-              "statusCode" : "404"
+              "statusCode" : "404",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Matter not found\", \"error\" : \"Matter not found\", \"status\" : 404, \"type\" : \"error\" }"
+              }
             },
             "default" : {
               "statusCode" : "400"
