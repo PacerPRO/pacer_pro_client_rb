@@ -416,6 +416,7 @@
               "statusCode" : "200"
             },
             "400" : {
+              "statusCode" : "400",
               "description" : "400 response",
               "schema" : {
                 "$ref" : "#/definitions/Error"
