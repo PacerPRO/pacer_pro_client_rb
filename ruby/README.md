@@ -85,8 +85,8 @@ Class | Method | HTTP request | Description
 *PacerProClient::CasesApi* | [**cases_get_one**](docs/CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
 *PacerProClient::CasesApi* | [**cases_get_parties**](docs/CasesApi.md#cases_get_parties) | **GET** /cases/{caseId}/parties | A table of parties.
 *PacerProClient::DocumentsApi* | [**documents_get_one**](docs/DocumentsApi.md#documents_get_one) | **GET** /documents/{documentId} | A single document.
-*PacerProClient::MattersApi* | [**matters_get_collection**](docs/MattersApi.md#matters_get_collection) | **GET** /matters | A collection of matters.
 *PacerProClient::MattersApi* | [**matters_get_one**](docs/MattersApi.md#matters_get_one) | **GET** /matters/{matterId} | A single matter.
+*PacerProClient::MatterstApi* | [**matters_get_collection**](docs/MatterstApi.md#matters_get_collection) | **GET** /matters | A collection of matters.
 
 
 ## Documentation for Models
