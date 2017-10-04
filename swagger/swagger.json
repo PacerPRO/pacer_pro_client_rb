@@ -339,7 +339,7 @@
     },
     "/matters" : {
       "get" : {
-        "tags" : [ "Matters" ],
+        "tags" : [ "Matterst" ],
         "summary" : "A collection of matters.",
         "description" : "Get all matters relevant to the firm.",
         "operationId" : "mattersGetCollection",
