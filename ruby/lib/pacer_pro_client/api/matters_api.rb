@@ -31,6 +31,77 @@ module PacerProClient
       @api_client = api_client
     end
 
+    # A collection of matters.
+    # Get all matters relevant to the firm.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [DateTime] :activity_at The time of last activity in the case.
+    # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
+    # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
+    # @option opts [Integer] :page Page number (default to 1)
+    # @option opts [Integer] :limit Limit number of objects returned per page (default to 20)
+    # @return [Array<Matter>]
+    def matters_get_collection(opts = {})
+      data, _status_code, _headers = matters_get_collection_with_http_info(opts)
+      return data
+    end
+
+    # A collection of matters.
+    # Get all matters relevant to the firm.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :authorization Bearer {...JSON Web Token...}
+    # @option opts [DateTime] :activity_at The time of last activity in the case.
+    # @option opts [String] :court_type The court type (district, bankruptcy or appellate.)
+    # @option opts [String] :has_client_matter_number If &#39;yes&#39; or &#39;no&#39;, restricts results to matters that have or do not have a client matter number.
+    # @option opts [Integer] :page Page number
+    # @option opts [Integer] :limit Limit number of objects returned per page
+    # @return [Array<(Array<Matter>, Fixnum, Hash)>] Array<Matter> data, response status code and response headers
+    def matters_get_collection_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: MattersApi.matters_get_collection ..."
+      end
+      # resource path
+      local_var_path = "/matters".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'activityAt'] = opts[:'activity_at'] if !opts[:'activity_at'].nil?
+      query_params[:'courtType'] = opts[:'court_type'] if !opts[:'court_type'].nil?
+      query_params[:'hasClientMatterNumber'] = opts[:'has_client_matter_number'] if !opts[:'has_client_matter_number'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+      header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['Bearer']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Matter>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MattersApi#matters_get_collection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # A single matter.
     # Get a single matter, specified by `matterId` in the path.
     # @param matter_id The database identifier of the matter.

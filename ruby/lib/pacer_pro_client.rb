@@ -47,7 +47,6 @@ require 'pacer_pro_client/api/case_events_api'
 require 'pacer_pro_client/api/cases_api'
 require 'pacer_pro_client/api/documents_api'
 require 'pacer_pro_client/api/matters_api'
-require 'pacer_pro_client/api/matterst_api'
 
 module PacerProClient
   class << self
