@@ -590,6 +590,12 @@
               "responseTemplates" : {
                 "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
               }
+            },
+            "404" : {
+              "statusCode" : "404",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case event not found\", \"error\" : \"Case event not found\", \"status\" : 401, \"type\" : \"error\" }"
+              }
             }
           },
           "requestParameters" : {
