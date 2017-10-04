@@ -572,6 +572,12 @@
             "schema" : {
               "$ref" : "#/definitions/Error"
             }
+          },
+          "404" : {
+            "description" : "404: The specified resource was not found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           }
         },
         "security" : [ {
@@ -594,7 +600,7 @@
             "404" : {
               "statusCode" : "404",
               "responseTemplates" : {
-                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case event not found\", \"error\" : \"Case event not found\", \"status\" : 401, \"type\" : \"error\" }"
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case event not found\", \"error\" : \"Case event not found\", \"status\" : 404, \"type\" : \"error\" }"
               }
             }
           },
