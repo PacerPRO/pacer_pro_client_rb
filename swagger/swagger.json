@@ -643,6 +643,12 @@
               "$ref" : "#/definitions/CaseEvent"
             }
           },
+          "401" : {
+            "description" : "401: Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
           "404" : {
             "description" : "404: The specified resource was not found",
             "schema" : {
@@ -657,6 +663,12 @@
           "responses" : {
             "2\\d{2}" : {
               "statusCode" : "200"
+            },
+            "401" : {
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
+              }
             },
             "404" : {
               "statusCode" : "404"
