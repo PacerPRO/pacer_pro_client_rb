@@ -420,9 +420,6 @@
               "responseTemplates" : {
                 "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
               }
-            },
-            "4\\d{2}" : {
-              "statusCode" : "400"
             }
           },
           "requestParameters" : {
