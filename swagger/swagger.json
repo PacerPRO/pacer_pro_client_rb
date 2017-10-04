@@ -455,6 +455,12 @@
               "$ref" : "#/definitions/Matter"
             }
           },
+          "401" : {
+            "description" : "401: Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
           "404" : {
             "description" : "404: The specified resource was not found",
             "schema" : {
