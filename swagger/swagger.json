@@ -470,6 +470,12 @@
             "2\\d{2}" : {
               "statusCode" : "200"
             },
+            "401" : {
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
+              }
+            },
             "404" : {
               "statusCode" : "404"
             },
