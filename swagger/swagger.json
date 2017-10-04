@@ -699,7 +699,7 @@
             "401" : {
               "statusCode" : "401",
               "responseTemplates" : {
-                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : $input.json('error'), \"error\" : $input.json('error'), \"status\" : 401, \"type\" : $input.json('type')}"
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : $input.json('error'), \"error\" : $input.json('error'), \"status\" : 401, \"type\" : $input.json('type') }"
               }
             }
           },
