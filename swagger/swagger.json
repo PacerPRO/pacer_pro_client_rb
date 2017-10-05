@@ -53,6 +53,18 @@
                 "$ref" : "#/definitions/Case"
               }
             }
+          },
+          "400" : {
+            "description" : "400 response",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "401" : {
+            "description" : "401: Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           }
         },
         "security" : [ {
@@ -63,8 +75,14 @@
             "2\\d{2}" : {
               "statusCode" : "200"
             },
-            "4\\d{2}" : {
+            "400" : {
               "statusCode" : "400"
+            },
+            "401" : {
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
+              }
             }
           },
           "requestParameters" : {
