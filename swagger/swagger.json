@@ -124,6 +124,12 @@
               "$ref" : "#/definitions/Case"
             }
           },
+          "401" : {
+            "description" : "401: Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
           "404" : {
             "description" : "404: The specified resource was not found",
             "schema" : {
@@ -139,8 +145,17 @@
             "2\\d{2}" : {
               "statusCode" : "200"
             },
+            "401" : {
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
+              }
+            },
             "404" : {
-              "statusCode" : "404"
+              "statusCode" : "404",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case not found\", \"error\" : \"Case not found\", \"status\" : 404, \"type\" : \"error\" }"
+              }
             },
             "default" : {
               "statusCode" : "400"
