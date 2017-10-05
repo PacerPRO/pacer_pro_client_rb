@@ -691,7 +691,7 @@
             "404" : {
               "statusCode" : "404",
               "responseTemplates" : {
-                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case event not found\", \"error\" : \"Case event not found\", \"status\" : 404, \"type\" : \"error\" }"
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case not found\", \"error\" : \"Case not found\", \"status\" : 404, \"type\" : \"error\" }"
               }
             },
             "default" : {
