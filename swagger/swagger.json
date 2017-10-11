@@ -172,6 +172,81 @@
         }
       }
     },
+    "/cases/{caseId}/case_summary_job" : {
+      "get" : {
+        "tags" : [ "Cases" ],
+        "summary" : "Starts a job to scrape case summary data for the case.",
+        "description" : "Starts a job to scrape case summary data for the case, and returns the job id.",
+        "operationId" : "casesGetCaseSummaryJob",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "Bearer {...JSON Web Token...}",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "caseId",
+          "in" : "path",
+          "description" : "The database identifier of the case.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          },
+          "401" : {
+            "description" : "401: Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "404: The specified resource was not found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        },
+        "security" : [ {
+          "Bearer" : [ ]
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "responses" : {
+            "2\\d{2}" : {
+              "statusCode" : "200"
+            },
+            "401" : {
+              "statusCode" : "401",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Token invalid or expired\", \"error\" : $input.json('error'), \"status\" : 401, \"type\" : \"error\" }"
+              }
+            },
+            "404" : {
+              "statusCode" : "404",
+              "responseTemplates" : {
+                "application/json" : "#set($inputRoot = $input.path('$')) { \"message\" : \"Case not found\", \"error\" : \"Case not found\", \"status\" : 404, \"type\" : \"error\" }"
+              }
+            },
+            "default" : {
+              "statusCode" : "400"
+            }
+          },
+          "uri" : "https://${stageVariables.endpoint}/api/${stageVariables.version}/cases/{caseId}/case_summary_job",
+          "requestParameters" : {
+            "integration.request.path.caseId" : "method.request.path.caseId",
+            "integration.request.header.Authorization" : "method.request.header.Authorization"
+          },
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "type" : "http"
+        }
+      }
+    },
     "/cases/{caseId}/docket_entries" : {
       "get" : {
         "tags" : [ "Cases" ],
@@ -1263,6 +1338,16 @@
         "proSe" : {
           "type" : "boolean",
           "description" : "Attorney appearing _pro se_."
+        }
+      }
+    },
+    "inline_response_200" : {
+      "required" : [ "jobId" ],
+      "properties" : {
+        "jobId" : {
+          "type" : "string",
+          "format" : "uuid",
+          "description" : "The UUID of the case-summary scraping job that was started on PacerPro's servers."
         }
       }
     },
