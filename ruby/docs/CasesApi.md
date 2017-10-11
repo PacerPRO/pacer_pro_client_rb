@@ -4,10 +4,69 @@ All URIs are relative to *https://api.pacerpro.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cases_get_case_summary_job**](CasesApi.md#cases_get_case_summary_job) | **GET** /cases/{caseId}/case_summary_job | Starts a job to scrape case summary data for the case.
 [**cases_get_collection**](CasesApi.md#cases_get_collection) | **GET** /cases | A collection of cases.
 [**cases_get_docket_entries**](CasesApi.md#cases_get_docket_entries) | **GET** /cases/{caseId}/docket_entries | A table of docket entries.
 [**cases_get_one**](CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
 [**cases_get_parties**](CasesApi.md#cases_get_parties) | **GET** /cases/{caseId}/parties | A table of parties.
+
+
+# **cases_get_case_summary_job**
+> InlineResponse200 cases_get_case_summary_job(case_id, opts)
+
+Starts a job to scrape case summary data for the case.
+
+Starts a job to scrape case summary data for the case, and returns the job id.
+
+### Example
+```ruby
+# load the gem
+require 'pacer_pro_client'
+# setup authorization
+PacerProClient.configure do |config|
+  # Configure API key authorization: Bearer
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = PacerProClient::CasesApi.new
+
+case_id = "case_id_example" # String | The database identifier of the case.
+
+opts = { 
+  authorization: "authorization_example" # String | Bearer {...JSON Web Token...}
+}
+
+begin
+  #Starts a job to scrape case summary data for the case.
+  result = api_instance.cases_get_case_summary_job(case_id, opts)
+  p result
+rescue PacerProClient::ApiError => e
+  puts "Exception when calling CasesApi->cases_get_case_summary_job: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **case_id** | **String**| The database identifier of the case. | 
+ **authorization** | **String**| Bearer {...JSON Web Token...} | [optional] 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 
 
 # **cases_get_collection**

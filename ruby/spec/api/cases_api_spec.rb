@@ -43,6 +43,19 @@ describe 'CasesApi' do
     end
   end
 
+  # unit tests for cases_get_case_summary_job
+  # Starts a job to scrape case summary data for the case.
+  # Starts a job to scrape case summary data for the case, and returns the job id.
+  # @param case_id The database identifier of the case.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :authorization Bearer {...JSON Web Token...}
+  # @return [InlineResponse200]
+  describe 'cases_get_case_summary_job test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for cases_get_collection
   # A collection of cases.
   # Get all cases related to your account.

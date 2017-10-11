@@ -80,6 +80,7 @@ Class | Method | HTTP request | Description
 *PacerProClient::AuthenticationApi* | [**session_refresh**](docs/AuthenticationApi.md#session_refresh) | **GET** /session | Refresh authentication token
 *PacerProClient::CaseEventsApi* | [**case_events_get_collection**](docs/CaseEventsApi.md#case_events_get_collection) | **GET** /case_events | A collection of case events.
 *PacerProClient::CaseEventsApi* | [**case_events_get_one**](docs/CaseEventsApi.md#case_events_get_one) | **GET** /case_events/{caseEventId} | A single case event.
+*PacerProClient::CasesApi* | [**cases_get_case_summary_job**](docs/CasesApi.md#cases_get_case_summary_job) | **GET** /cases/{caseId}/case_summary_job | Starts a job to scrape case summary data for the case.
 *PacerProClient::CasesApi* | [**cases_get_collection**](docs/CasesApi.md#cases_get_collection) | **GET** /cases | A collection of cases.
 *PacerProClient::CasesApi* | [**cases_get_docket_entries**](docs/CasesApi.md#cases_get_docket_entries) | **GET** /cases/{caseId}/docket_entries | A table of docket entries.
 *PacerProClient::CasesApi* | [**cases_get_one**](docs/CasesApi.md#cases_get_one) | **GET** /cases/{caseId} | A single case.
@@ -98,6 +99,7 @@ Class | Method | HTTP request | Description
  - [PacerProClient::Empty](docs/Empty.md)
  - [PacerProClient::Error](docs/Error.md)
  - [PacerProClient::Firm](docs/Firm.md)
+ - [PacerProClient::InlineResponse200](docs/InlineResponse200.md)
  - [PacerProClient::Matter](docs/Matter.md)
  - [PacerProClient::ModelCase](docs/ModelCase.md)
  - [PacerProClient::Party](docs/Party.md)
