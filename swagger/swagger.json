@@ -266,6 +266,33 @@
           "description" : "The database identifier of the case.",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "fromDocNum",
+          "in" : "query",
+          "description" : "Limit returned docket entries to those starting at this docket entry number.",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "Page number",
+          "required" : false,
+          "type" : "integer",
+          "default" : 1
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limit number of objects returned per page",
+          "required" : false,
+          "type" : "integer",
+          "default" : 20
+        }, {
+          "name" : "since",
+          "in" : "query",
+          "description" : "Limit returned docket entries to those filed on or after this date.",
+          "required" : false,
+          "type" : "string",
+          "format" : "date-time"
         } ],
         "responses" : {
           "200" : {
@@ -316,8 +343,12 @@
           },
           "uri" : "https://${stageVariables.endpoint}/api/${stageVariables.version}/cases/{caseId}/docket_entries",
           "requestParameters" : {
+            "integration.request.header.Authorization" : "method.request.header.Authorization",
             "integration.request.path.caseId" : "method.request.path.caseId",
-            "integration.request.header.Authorization" : "method.request.header.Authorization"
+            "integration.request.querystring.fromDocNum" : "method.request.querystring.fromDocNum",
+            "integration.request.querystring.page" : "method.request.querystring.page",
+            "integration.request.querystring.limit" : "method.request.querystring.limit",
+            "integration.request.querystring.since" : "method.request.querystring.since"
           },
           "passthroughBehavior" : "when_no_match",
           "httpMethod" : "GET",
