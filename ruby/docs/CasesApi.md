@@ -152,7 +152,11 @@ api_instance = PacerProClient::CasesApi.new
 case_id = "case_id_example" # String | The database identifier of the case.
 
 opts = { 
-  authorization: "authorization_example" # String | Bearer {...JSON Web Tokens...}
+  authorization: "authorization_example", # String | Bearer {...JSON Web Tokens...}
+  from_doc_num: 56, # Integer | Limit returned docket entries to those starting at this docket entry number.
+  page: 1, # Integer | Page number
+  limit: 20, # Integer | Limit number of objects returned per page
+  since: DateTime.parse("2013-10-20T19:20:30+01:00") # DateTime | Limit returned docket entries to those filed on or after this date.
 }
 
 begin
@@ -170,6 +174,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **case_id** | **String**| The database identifier of the case. | 
  **authorization** | **String**| Bearer {...JSON Web Tokens...} | [optional] 
+ **from_doc_num** | **Integer**| Limit returned docket entries to those starting at this docket entry number. | [optional] 
+ **page** | **Integer**| Page number | [optional] [default to 1]
+ **limit** | **Integer**| Limit number of objects returned per page | [optional] [default to 20]
+ **since** | **DateTime**| Limit returned docket entries to those filed on or after this date. | [optional] 
 
 ### Return type
 

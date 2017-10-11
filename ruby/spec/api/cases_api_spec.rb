@@ -76,6 +76,10 @@ describe 'CasesApi' do
   # @param case_id The database identifier of the case.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+  # @option opts [Integer] :from_doc_num Limit returned docket entries to those starting at this docket entry number.
+  # @option opts [Integer] :page Page number
+  # @option opts [Integer] :limit Limit number of objects returned per page
+  # @option opts [DateTime] :since Limit returned docket entries to those filed on or after this date.
   # @return [Array<DocketEntry>]
   describe 'cases_get_docket_entries test' do
     it "should work" do

@@ -158,6 +158,10 @@ module PacerProClient
     # @param case_id The database identifier of the case.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+    # @option opts [Integer] :from_doc_num Limit returned docket entries to those starting at this docket entry number.
+    # @option opts [Integer] :page Page number (default to 1)
+    # @option opts [Integer] :limit Limit number of objects returned per page (default to 20)
+    # @option opts [DateTime] :since Limit returned docket entries to those filed on or after this date.
     # @return [Array<DocketEntry>]
     def cases_get_docket_entries(case_id, opts = {})
       data, _status_code, _headers = cases_get_docket_entries_with_http_info(case_id, opts)
@@ -169,6 +173,10 @@ module PacerProClient
     # @param case_id The database identifier of the case.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Bearer {...JSON Web Tokens...}
+    # @option opts [Integer] :from_doc_num Limit returned docket entries to those starting at this docket entry number.
+    # @option opts [Integer] :page Page number
+    # @option opts [Integer] :limit Limit number of objects returned per page
+    # @option opts [DateTime] :since Limit returned docket entries to those filed on or after this date.
     # @return [Array<(Array<DocketEntry>, Fixnum, Hash)>] Array<DocketEntry> data, response status code and response headers
     def cases_get_docket_entries_with_http_info(case_id, opts = {})
       if @api_client.config.debugging
@@ -181,6 +189,10 @@ module PacerProClient
 
       # query parameters
       query_params = {}
+      query_params[:'fromDocNum'] = opts[:'from_doc_num'] if !opts[:'from_doc_num'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
 
       # header parameters
       header_params = {}
